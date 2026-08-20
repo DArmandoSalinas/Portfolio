@@ -81,7 +81,7 @@ export function Certifications({ available }: Props) {
                 <p className="mt-2 text-[13.5px] font-semibold text-muted">
                   {featuredCert.issuer} · {featuredCert.year}
                 </p>
-                <p className="mt-4 max-w-[34rem] text-[15px] leading-[1.55] text-muted text-pretty">
+                <p className="mt-4 max-w-[34rem] text-[15.5px] leading-[1.6] text-ink/80 text-pretty">
                   {featuredCert.takeaway}
                 </p>
                 <p className="mt-5 text-[13px] leading-snug text-muted">
@@ -127,7 +127,7 @@ export function Certifications({ available }: Props) {
                       <h4 className="mt-1.5 text-[15.5px] font-bold leading-snug tracking-[-0.015em] text-ink text-pretty">
                         {c.title}
                       </h4>
-                      <p className="mt-2 text-[13px] leading-snug text-muted text-pretty">
+                      <p className="mt-2 text-[13.5px] leading-[1.5] text-ink/75 text-pretty">
                         {c.takeaway}
                       </p>
                       {c.url && (
@@ -175,7 +175,7 @@ export function Certifications({ available }: Props) {
                     <h4 className="mt-1.5 text-[15px] font-bold leading-snug tracking-[-0.015em] text-ink text-pretty">
                       {c.title}
                     </h4>
-                    <p className="mt-1.5 text-[13px] leading-snug text-muted text-pretty">
+                    <p className="mt-1.5 text-[13.5px] leading-[1.5] text-ink/75 text-pretty">
                       {c.takeaway}
                     </p>
                     {c.url && (

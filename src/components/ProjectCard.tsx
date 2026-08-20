@@ -40,8 +40,8 @@ export function ProjectCard({ project: p, variant = "compact" }: Props) {
       </p>
 
       <p
-        className={`mt-3 leading-[1.55] text-muted text-pretty ${
-          featured ? "text-[15px]" : "text-[14px]"
+        className={`mt-3 leading-[1.6] text-ink/75 text-pretty ${
+          featured ? "text-[15.5px]" : "text-[14.5px]"
         }`}
       >
         {p.body}
@@ -72,7 +72,8 @@ export function ProjectCard({ project: p, variant = "compact" }: Props) {
       )}
 
       {p.note && (
-        <p className="mt-4 border-l-2 border-line pl-3 text-[12.5px] leading-snug text-muted">
+        <p className="mt-4 border-l-2 pl-3 text-[13px] leading-snug text-muted"
+          style={{ borderColor: "var(--orange-border)" }}>
           {p.note}
         </p>
       )}

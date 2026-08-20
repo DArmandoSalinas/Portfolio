@@ -42,15 +42,15 @@ export function Hero() {
             MSc AI with Distinction · Generative AI at SAP · Founder of ARMATUS
           </p>
 
-          <blockquote
-            className="mt-7 border-l-2 pl-5 text-[15.5px] leading-[1.6] text-ink/90 text-pretty"
-            style={{ borderColor: "var(--primary)" }}
-          >
-            &ldquo;I build the whole path — raw signal to shipped system.
-            Mechatronics gave me the hardware instincts, an MSc in AI gave me the
-            models, and founding ARMATUS taught me what it actually costs to put one
-            in someone&rsquo;s hands. I measure honestly and I ship.&rdquo;
-          </blockquote>
+          <p className="mt-7 max-w-[31rem] text-[15.5px] leading-[1.6] text-ink/80 text-pretty">
+            Predictive maintenance at{" "}
+            <span className="font-semibold text-ink">16.74-cycle RMSE</span> on NASA
+            C-MAPSS. Leak-free clinical classification at{" "}
+            <span className="font-semibold text-ink">0.90 ROC-AUC</span>. Retrieval
+            systems where every answer cites its source. A mechatronics foundation, an
+            MSc in Artificial Intelligence with Distinction, and two products carried
+            from first commit to real users.
+          </p>
 
           <div className="mt-9 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
             <a href="#projects" className="btn btn-primary">

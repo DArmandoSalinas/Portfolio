@@ -23,6 +23,10 @@ documents.
 | `essex-msc.jpg` | MSc Artificial Intelligence with Distinction · University of Essex |
 | `cs50x.jpg` | CS50x · Harvard University |
 | `rockwell-award.jpg` | Rockwell Automation integration-project recognition (Dec 2025) |
+| `google-analytics.jpg` | Google Analytics Certification · Google |
+| `ga4-deep-dive.jpg` | Dive Deeper into GA4 Data and Reports · Google |
+| `intro-generative-ai.jpg` | Introduction to Generative AI · Google Cloud |
+| `kaggle-intro-ml.jpg` | Intro to Machine Learning · Kaggle |
 
 ## Still missing
 
@@ -31,9 +35,6 @@ Add any of these and the card picks it up on the next build — no code change.
 | File | Credential |
 | --- | --- |
 | `google-analytics.jpg` | Google Analytics · Google Digital Academy |
-| `intro-generative-ai.jpg` | Introduction to Generative AI · Google Cloud |
-| `ga4-deep-dive.jpg` | Dive Deeper into GA4 Data and Reports · Google |
-| `kaggle-intro-ml.jpg` | Intro to Machine Learning · Kaggle |
 | `kaggle-python.jpg` | Python · Kaggle |
 | `qpr.jpg` | QPR Suicide Prevention Gatekeeper |
 
