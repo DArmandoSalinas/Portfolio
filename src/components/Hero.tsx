@@ -1,7 +1,7 @@
 import { Ambient } from "./Ambient";
 import { LogoHalo } from "./LogoHalo";
+import { Portrait } from "./Portrait";
 import { ArrowUpRight, DownloadIcon } from "./Icons";
-import { PipelinePanel } from "./PipelinePanel";
 import { site } from "@/data/site";
 
 export function Hero() {
@@ -10,17 +10,17 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden"
       style={{
-        paddingTop: "calc(var(--nav-h) + var(--safe-top) + clamp(2.5rem, 8vw, 5rem))",
+        paddingTop: "calc(var(--nav-h) + var(--safe-top) + clamp(2rem, 6vw, 4rem))",
         paddingBottom: "clamp(3rem, 9vw, 6rem)",
       }}
     >
       <Ambient />
 
-      <div className="shell relative z-[1] grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+      <div className="shell relative z-[1] grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
         {/* ── copy ── */}
         <div className="max-w-[34rem]">
           <div className="flex items-center gap-7 sm:gap-8">
-            <LogoHalo size={54} priority />
+            <LogoHalo size={54} />
             <div className="min-w-0">
               <p className="eyebrow !mb-1">{site.role}</p>
               <p className="truncate text-[13px] font-semibold text-muted">
@@ -37,11 +37,23 @@ export function Hero() {
 
           <p className="mt-6 max-w-[30rem] text-[17px] leading-[1.55] text-muted text-pretty">
             End-to-end machine learning — data, model, API, interface, cloud.
-            <span className="block pt-2 text-ink/90">{site.subhead}</span>
+          </p>
+          <p className="mt-2 max-w-[30rem] text-[17px] font-semibold leading-[1.55] text-ink text-pretty">
+            MSc AI with Distinction · Generative AI at SAP · Founder of ARMATUS
           </p>
 
+          <blockquote
+            className="mt-7 border-l-2 pl-5 text-[15.5px] leading-[1.6] text-ink/90 text-pretty"
+            style={{ borderColor: "var(--primary)" }}
+          >
+            &ldquo;I build the whole path — raw signal to shipped system.
+            Mechatronics gave me the hardware instincts, an MSc in AI gave me the
+            models, and founding ARMATUS taught me what it actually costs to put one
+            in someone&rsquo;s hands. I measure honestly and I ship.&rdquo;
+          </blockquote>
+
           <div className="mt-9 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-            <a href="#work" className="btn btn-primary">
+            <a href="#projects" className="btn btn-primary">
               View work
             </a>
             <a href={site.cv} download className="btn btn-ghost">
@@ -62,8 +74,8 @@ export function Hero() {
           </p>
         </div>
 
-        {/* ── system panel ── */}
-        <PipelinePanel />
+        {/* ── portrait ── */}
+        <Portrait />
       </div>
 
       {/* ── protocol row ── */}

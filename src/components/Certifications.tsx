@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { SectionHead } from "./SectionHead";
 import { Reveal } from "./Reveal";
 import { CertImage } from "./CertImage";
 import { Lightbox } from "./Lightbox";
 import { ArrowUpRight, SparkIcon } from "./Icons";
-import { certifications, certCount, featuredCert, type Cert } from "@/data/certifications";
+import {
+  certifications,
+  certCount,
+  featuredCert,
+  type Cert,
+} from "@/data/certifications";
 
 type Props = {
   /** Image paths that actually exist in /public — resolved on the server. */
@@ -15,7 +20,23 @@ type Props = {
 
 export function Certifications({ available }: Props) {
   const [shown, setShown] = useState<Cert | null>(null);
-  const have = new Set(available);
+  const have = useMemo(() => new Set(available), [available]);
+
+  /** Credentials with artwork keep their group; the rest collect under "Others". */
+  const { groups, others } = useMemo(() => {
+    const rest: Cert[] = [];
+    const withArt = certifications
+      .map((g) => ({
+        ...g,
+        items: g.items.filter((c) => {
+          if (have.has(c.image)) return true;
+          rest.push(c);
+          return false;
+        }),
+      }))
+      .filter((g) => g.items.length > 0);
+    return { groups: withArt, others: rest };
+  }, [have]);
 
   return (
     <section id="certifications" className="section" aria-labelledby="certifications-title">
@@ -23,7 +44,7 @@ export function Certifications({ available }: Props) {
         <SectionHead
           eyebrow="Certifications"
           title="Verified, not claimed."
-          lead="Vendor certifications, a graded specialization, and the course record underneath them."
+          lead="Vendor certifications, a graded specialization, and the course record underneath them. Every credential below is the real document — click to enlarge."
           aside={
             <span className="text-[13px] text-muted">
               <span className="metric-value !text-[20px]">{certCount}</span> credentials
@@ -74,7 +95,7 @@ export function Certifications({ available }: Props) {
 
         {/* ── grouped grid ── */}
         <div className="grid gap-12">
-          {certifications.map((group) => (
+          {groups.map((group) => (
             <div key={group.group}>
               <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-3">
                 <h3 className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-primary">
@@ -90,9 +111,9 @@ export function Certifications({ available }: Props) {
                       <CertImage
                         src={c.image}
                         alt={`${c.title} certificate`}
-                        exists={have.has(c.image)}
+                        exists
                         issuer={c.issuer}
-                        onOpen={have.has(c.image) ? () => setShown(c) : undefined}
+                        onOpen={() => setShown(c)}
                         className="mb-4 aspect-[4/3] object-contain"
                       />
                       <div className="flex items-baseline justify-between gap-3">
@@ -126,6 +147,53 @@ export function Certifications({ available }: Props) {
             </div>
           ))}
         </div>
+
+        {/* ── others: credentials held, artwork not shown ── */}
+        {others.length > 0 && (
+          <div className="mt-12">
+            <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-3">
+              <h3 className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-primary">
+                Others
+              </h3>
+              <p className="text-[13px] text-muted">
+                Also held. Certificate image not displayed.
+              </p>
+            </div>
+
+            <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {others.map((c, i) => (
+                <Reveal as="li" key={c.id} index={i} className="h-full">
+                  <article className="card h-full p-4">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-muted">
+                        {c.issuer}
+                      </p>
+                      <p className="shrink-0 text-[11px] font-bold tabular-nums text-muted">
+                        {c.year}
+                      </p>
+                    </div>
+                    <h4 className="mt-1.5 text-[15px] font-bold leading-snug tracking-[-0.015em] text-ink text-pretty">
+                      {c.title}
+                    </h4>
+                    <p className="mt-1.5 text-[13px] leading-snug text-muted text-pretty">
+                      {c.takeaway}
+                    </p>
+                    {c.url && (
+                      <a
+                        href={c.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-auto inline-flex items-center gap-1.5 pt-3 text-[12.5px] font-bold text-primary transition-opacity hover:opacity-80"
+                      >
+                        Verify <ArrowUpRight className="text-[13px]" />
+                      </a>
+                    )}
+                  </article>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <Lightbox

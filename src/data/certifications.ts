@@ -14,6 +14,21 @@ export type CertGroup = { group: string; blurb: string; items: Cert[] };
 
 export const certifications: CertGroup[] = [
   {
+    group: "Awards & Recognition",
+    blurb: "Competition results and industry recognition.",
+    items: [
+      {
+        id: "rockwell",
+        title: "Rockwell Automation — Integration Project Recognition",
+        issuer: "Rockwell Automation · Tec de Monterrey",
+        year: "Dec 2025",
+        takeaway:
+          "Certificate of participation recognizing outstanding contribution to an integration project built on Rockwell Automation technology. The underlying motor-monitoring work took first place at Tec Expo Ingenierías.",
+        image: "/certs/rockwell-award.jpg",
+      },
+    ],
+  },
+  {
     group: "Professional",
     blurb: "Vendor-verified, issued against a live product surface.",
     items: [
@@ -38,11 +53,21 @@ export const certifications: CertGroup[] = [
       },
       {
         id: "google-analytics",
-        title: "Google Analytics",
-        issuer: "Google Digital Academy",
-        year: "2025",
-        takeaway: "Measurement, reporting and behavioural analysis of product traffic.",
+        title: "Google Analytics Certification",
+        issuer: "Google",
+        year: "Oct 2025",
+        takeaway:
+          "GA4 measurement, reporting and behavioural analysis of product traffic. Credential 162337721, valid to Oct 2026.",
         image: "/certs/google-analytics.jpg",
+      },
+      {
+        id: "ga4-deep-dive",
+        title: "Dive Deeper into GA4 Data and Reports",
+        issuer: "Google",
+        year: "Oct 2025",
+        takeaway:
+          "Explorations, segments and custom GA4 reporting beyond the default dashboards.",
+        image: "/certs/ga4-deep-dive.jpg",
       },
     ],
   },
@@ -134,7 +159,8 @@ export const certifications: CertGroup[] = [
         title: "CS50's Introduction to Computer Science",
         issuer: "Harvard University",
         year: "Dec 2022",
-        takeaway: "C, Python, SQL, HTML, CSS, JavaScript and Flask — from memory to web.",
+        takeaway:
+          "Ten problem sets, eight labs and a final project across C, Python, SQL, HTML/CSS, JavaScript and Flask.",
         url: "https://cs50.harvard.edu/certificates/c4e41b00-a724-43da-84b3-18e64c9fd221",
         image: "/certs/cs50x.jpg",
       },
@@ -142,7 +168,7 @@ export const certifications: CertGroup[] = [
         id: "kaggle-ml",
         title: "Intro to Machine Learning",
         issuer: "Kaggle",
-        year: "2024",
+        year: "Apr 2024",
         takeaway: "Model building and validation on real-estate prediction notebooks.",
         image: "/certs/kaggle-intro-ml.jpg",
       },

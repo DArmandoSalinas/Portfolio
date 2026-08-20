@@ -536,7 +536,7 @@ html[data-anim="on"] [data-reveal].is-in {
 
 @media print {
   @page {
-    margin: 14mm 15mm;
+    margin: 9.5mm 10mm;
   }
 
   :root {
@@ -556,8 +556,8 @@ html[data-anim="on"] [data-reveal].is-in {
   body {
     background: #fff !important;
     color: #000 !important;
-    font-size: 10.2pt;
-    line-height: 1.4;
+    font-size: 8.3pt;
+    line-height: 1.25;
   }
 
   /* site chrome never belongs in the printed CV */
@@ -602,11 +602,54 @@ html[data-anim="on"] [data-reveal].is-in {
     break-after: avoid;
   }
 
+  p,
   li {
-    break-inside: avoid;
+    orphans: 2;
+    widows: 2;
   }
 
   .print-break {
     break-before: page;
+  }
+
+  /* the CV is a density exercise: reclaim vertical space that only exists
+     to give the on-screen version breathing room */
+  article section {
+    margin-bottom: 8px !important;
+  }
+  article header {
+    margin-bottom: 10px !important;
+    padding-bottom: 6px !important;
+  }
+  article h2 {
+    margin-bottom: 4px !important;
+    padding-bottom: 2px !important;
+  }
+  article ol {
+    gap: 5px !important;
+  }
+  article ul {
+    gap: 2px !important;
+  }
+
+  /* every CV element carries an explicit px size for the on-screen view, so
+     print scaling has to be stated rather than inherited */
+  .print-page p,
+  .print-page li,
+  .print-page dd,
+  .print-page dt,
+  .print-page span,
+  .print-page code {
+    font-size: 8.6pt !important;
+    line-height: 1.3 !important;
+  }
+  .print-page h1 {
+    font-size: 20pt !important;
+  }
+  .print-page h2 {
+    font-size: 8.6pt !important;
+  }
+  .print-page h3 {
+    font-size: 9.6pt !important;
   }
 }

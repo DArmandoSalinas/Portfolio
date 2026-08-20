@@ -1,12 +1,7 @@
 import { Reveal } from "./Reveal";
+import { PipelinePanel } from "./PipelinePanel";
 import { site } from "@/data/site";
 
-const FACTS = [
-  { k: "Now", v: "Generative AI Engineer at SAP" },
-  { k: "Founding", v: "ARMATUS — production iOS coach" },
-  { k: "Studied", v: "MSc AI, Distinction · Mechatronics" },
-  { k: "Based", v: "Monterrey, MX · TN visa eligible" },
-];
 
 export function About() {
   return (
@@ -25,21 +20,7 @@ export function About() {
           </Reveal>
 
           <Reveal index={1}>
-            <dl className="grid gap-px overflow-hidden rounded-[var(--radius-lg)] border border-line bg-line">
-              {FACTS.map((f) => (
-                <div
-                  key={f.k}
-                  className="flex items-baseline gap-4 bg-background px-5 py-4"
-                >
-                  <dt className="w-[4.5rem] shrink-0 text-[11px] font-extrabold uppercase tracking-[0.14em] text-primary">
-                    {f.k}
-                  </dt>
-                  <dd className="text-[14.5px] font-semibold leading-snug text-ink text-pretty">
-                    {f.v}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <PipelinePanel />
           </Reveal>
         </div>
       </div>

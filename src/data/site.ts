@@ -27,7 +27,6 @@ export const site = {
   about:
     "AI & ML engineer who builds full systems, not notebooks. Mechatronics at Tecnológico de Monterrey plus an MSc in Artificial Intelligence with Distinction at the University of Essex. Now at SAP designing Generative AI for technical fault reporting, and founder of ARMATUS — a production iOS coach that architects training weeks from profile, readiness and logged evidence. Work spans signal processing, explainable clinical ML, predictive maintenance, RAG and deployed FastAPI / Streamlit / Cloud Run products.",
   nav: [
-    { label: "Work", href: "#work" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Certifications", href: "#certifications" },
@@ -38,7 +37,7 @@ export const site = {
     { num: "01", label: "SAP", note: "Generative AI in production" },
     { num: "02", label: "ARMATUS", note: "Founder · shipped iOS" },
     { num: "03", label: "Research", note: "MSc AI, Distinction" },
-    { num: "04", label: "Built", note: "16 deployed systems" },
+    { num: "04", label: "Built", note: "17 shipped systems" },
   ],
 } as const;
 
