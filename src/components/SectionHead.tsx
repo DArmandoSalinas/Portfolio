@@ -1,26 +1,24 @@
 import { Reveal } from "./Reveal";
 
 type Props = {
-  eyebrow: string;
+  label: string;
   title: string;
   lead?: string;
-  impact?: boolean;
-  /** Right-hand slot — counts, links, controls. */
-  aside?: React.ReactNode;
+  meta?: React.ReactNode;
+  id?: string;
 };
 
-export function SectionHead({ eyebrow, title, lead, impact, aside }: Props) {
+export function SectionHead({ label, title, lead, meta, id }: Props) {
   return (
-    <Reveal className="mb-10 flex flex-col gap-6 sm:mb-12 md:flex-row md:items-end md:justify-between">
-      <div className="max-w-[36rem]">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2 className={impact ? "section-title section-title--impact" : "section-title"}>
-          {title}
-        </h2>
-        <span className="brand-underline" aria-hidden />
-        {lead && <p className="section-lead">{lead}</p>}
+    <Reveal className="mb-12 sm:mb-14">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+        <p className="text-[13px] font-semibold tracking-[0.04em] text-signal">{label}</p>
+        {meta && <p className="text-[13px] text-muted">{meta}</p>}
       </div>
-      {aside && <div className="shrink-0 md:pb-1">{aside}</div>}
+      <h2 id={id} className="h2 mt-3 max-w-[20ch]">
+        {title}
+      </h2>
+      {lead && <p className="lead mt-4 max-w-[46ch] text-muted">{lead}</p>}
     </Reveal>
   );
 }

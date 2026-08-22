@@ -20,7 +20,7 @@ export const LinkedInIcon = ({ className = "" }: P) => (
 );
 
 export const DownloadIcon = ({ className = "" }: P) => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden className={`${base} ${className}`}>
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden data-icon="down" className={`${base} ${className}`}>
     <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
@@ -57,8 +57,14 @@ export const MenuIcon = ({ className = "" }: P) => (
   </svg>
 );
 
-export const SparkIcon = ({ className = "" }: P) => (
+export const ArrowRight = ({ className = "" }: P) => (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden className={`${base} ${className}`}>
-    <path d="M12 2.5 13.9 9l6.6 1.9-6.6 1.9L12 19.4l-1.9-6.6L3.5 11 10.1 9 12 2.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    <path d="M4 12h15m0 0-5.5-5.5M19 12l-5.5 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const ChevronDown = ({ className = "" }: P) => (
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden className={`${base} ${className}`}>
+    <path d="m6 9.5 6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );

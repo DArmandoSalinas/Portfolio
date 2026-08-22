@@ -1,22 +1,34 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { site } from "@/data/site";
-import {
-  cvCerts,
-  cvEducation,
-  cvSpokenLanguages,
-  cvProjects,
-  cvRoles,
-  cvSkills,
-  cvSummary,
-} from "@/data/resume";
 import { PrintButton } from "@/components/PrintButton";
 import { DownloadIcon } from "@/components/Icons";
+import { isLocale, localePath } from "@/i18n/config";
+import { getResume } from "@/i18n/resume";
+import { getUi } from "@/i18n/ui";
+import { getContent } from "@/i18n/content";
 
-export const metadata: Metadata = {
-  title: "Resume",
-  description: `Curriculum vitae for ${site.name} — ${site.role}.`,
-  alternates: { canonical: "/resume" },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) return {};
+  const t = getUi(raw);
+  return {
+    title: t.resumeTitle,
+    description: t.resumeDescription,
+    alternates: {
+      canonical: localePath(raw, "/resume"),
+      languages: {
+        en: "/resume",
+        es: "/es/resume",
+        "x-default": "/resume",
+      },
+    },
+  };
+}
 
 function Rule({ label }: { label: string }) {
   return (
@@ -26,15 +38,10 @@ function Rule({ label }: { label: string }) {
   );
 }
 
-/**
- * Literal glyph rather than a CSS marker: list markers drawn by the renderer
- * do not always survive PDF text extraction, and ATS parsers read the text
- * layer. A real character guarantees the bullet structure is preserved.
- */
 function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex gap-2 text-[13.5px] leading-[1.45] text-muted print:text-black">
-      <span aria-hidden className="shrink-0 text-primary print:text-black">
+      <span aria-hidden className="shrink-0 text-muted print:text-black">
         •
       </span>
       <span>{children}</span>
@@ -42,7 +49,17 @@ function Bullet({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function ResumePage() {
+export default async function ResumePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) notFound();
+  const t = getUi(raw);
+  const { site: copy } = getContent(raw);
+  const cv = getResume(raw);
+
   return (
     <div
       className="shell print-page"
@@ -53,29 +70,25 @@ export default function ResumePage() {
       }}
     >
       <div className="no-print mb-10 flex flex-wrap items-center justify-between gap-4 rounded-[var(--radius-lg)] border border-line bg-surface p-4">
-        <p className="text-[13px] text-muted">
-          ATS-formatted: single column, standard headings, no tables or graphics.
-        </p>
+        <p className="text-[13px] text-muted">{t.resumeBanner}</p>
         <div className="flex flex-wrap gap-2.5">
           <a href={site.cv} download className="btn btn-primary !py-2.5 !text-[13px]">
-            <DownloadIcon /> Download PDF
+            <DownloadIcon /> {t.downloadCv}
           </a>
           <PrintButton />
         </div>
       </div>
 
       <article className="text-[14px] leading-[1.45] print:text-[8.6pt]">
-        {/* ── header ── */}
         <header className="mb-6 border-b-2 border-primary pb-4 print:border-black">
           <h1 className="text-[clamp(26px,4.4vw,34px)] font-extrabold leading-none tracking-[-0.03em] text-ink print:text-black">
             {site.name}
           </h1>
           <p className="mt-2 text-[15px] font-bold tracking-[-0.01em] text-primary print:text-black">
-            AI &amp; Machine Learning Engineer
+            {copy.role}
           </p>
           <p className="mt-2 text-[12.5px] text-muted print:text-black">
-            Monterrey, Mexico | TN Visa Eligible for United States roles | Open to
-            relocation and remote
+            {t.resumeLocationLine}
           </p>
           <p className="mt-1.5 text-[12.5px] text-muted print:text-black">
             {site.email} | {site.phone} | linkedin.com/in/diego-armando-salinas-062599248
@@ -83,19 +96,17 @@ export default function ResumePage() {
           </p>
         </header>
 
-        {/* ── summary ── */}
         <section className="mb-6">
-          <Rule label="Professional Summary" />
+          <Rule label={t.resumeSections.summary} />
           <p className="text-[13.5px] leading-[1.5] text-muted print:text-black text-pretty">
-            {cvSummary}
+            {cv.summary}
           </p>
         </section>
 
-        {/* ── skills: keyword block, placed high for ATS ── */}
         <section className="mb-6">
-          <Rule label="Technical Skills" />
+          <Rule label={t.resumeSections.skills} />
           <dl className="grid gap-1.5">
-            {cvSkills.map((g) => (
+            {cv.skills.map((g) => (
               <div key={g.label} className="grid gap-0.5 sm:grid-cols-[10.5rem_1fr] sm:gap-3">
                 <dt className="text-[12px] font-bold text-ink print:text-black">
                   {g.label}
@@ -107,18 +118,17 @@ export default function ResumePage() {
             ))}
             <div className="grid gap-0.5 sm:grid-cols-[10.5rem_1fr] sm:gap-3">
               <dt className="text-[12px] font-bold text-ink print:text-black">
-                Spoken Languages
+                {t.resumeSections.spoken}
               </dt>
-              <dd className="text-[13px] text-muted print:text-black">{cvSpokenLanguages}</dd>
+              <dd className="text-[13px] text-muted print:text-black">{cv.spoken}</dd>
             </div>
           </dl>
         </section>
 
-        {/* ── experience ── */}
         <section className="mb-6">
-          <Rule label="Professional Experience" />
+          <Rule label={t.resumeSections.experience} />
           <ol className="grid gap-4">
-            {cvRoles.map((r) => (
+            {cv.roles.map((r) => (
               <li key={r.org}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <h3 className="text-[14.5px] font-bold tracking-[-0.015em] text-ink print:text-black">
@@ -141,11 +151,10 @@ export default function ResumePage() {
           </ol>
         </section>
 
-        {/* ── projects ── */}
         <section className="mb-6">
-          <Rule label="Selected Projects" />
+          <Rule label={t.resumeSections.projects} />
           <ol className="grid gap-3.5">
-            {cvProjects.map((p) => (
+            {cv.projects.map((p) => (
               <li key={p.name}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <h3 className="text-[14px] font-bold tracking-[-0.01em] text-ink print:text-black">
@@ -168,11 +177,10 @@ export default function ResumePage() {
           </ol>
         </section>
 
-        {/* ── education ── */}
         <section className="mb-6">
-          <Rule label="Education" />
+          <Rule label={t.resumeSections.education} />
           <ol className="grid gap-2.5">
-            {cvEducation.map((e) => (
+            {cv.education.map((e) => (
               <li key={e.degree}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <h3 className="text-[14px] font-bold text-ink print:text-black">
@@ -193,13 +201,10 @@ export default function ResumePage() {
           </ol>
         </section>
 
-        {/* ── certifications ── */}
         <section>
-          <Rule label="Certifications" />
-          {/* flowing list rather than a grid: same keywords for the parser,
-              a fraction of the vertical space */}
+          <Rule label={t.resumeSections.certs} />
           <p className="text-[13px] leading-[1.5] text-muted print:text-black">
-            {cvCerts.join("  ·  ")}
+            {cv.certs.join("  ·  ")}
           </p>
         </section>
       </article>

@@ -1,11 +1,16 @@
 export const site = {
   name: "Diego Armando Salinas Lugo",
   shortName: "Diego Salinas",
+  displayName: "Diego Armando Salinas",
   role: "AI & Machine Learning Engineer",
-  headline: "Systems that don't improvise.",
-  headlineLines: ["Systems that", "don't improvise."],
-  subhead:
-    "MSc AI with Distinction · Generative AI at SAP · Founder of ARMATUS",
+  nameLines: ["Diego Armando", "Salinas"],
+  /**
+   * Two beats: what ships, then the path that made it possible.
+   */
+  bio: [
+    "I build machine-learning systems end to end: the model, the API, the interface, and the cloud they run on.",
+    "I studied mechatronics at Tecnológico de Monterrey and an MSc in Artificial Intelligence with Distinction at Essex. I work on Generative AI at SAP, and I founded ARMATUS, a training coach on iOS.",
+  ],
   location: "Monterrey, MX",
   workAuth: "Open to US roles — TN visa eligible",
   email: "salinas.diegoarmando03@gmail.com",
@@ -24,20 +29,17 @@ export const site = {
     { name: "English", level: "Professional" },
     { name: "German", level: "Basic" },
   ],
-  about:
-    "AI & ML engineer who builds full systems, not notebooks. Mechatronics at Tecnológico de Monterrey plus an MSc in Artificial Intelligence with Distinction at the University of Essex. Now at SAP designing Generative AI for technical fault reporting, and founder of ARMATUS — a production iOS coach that architects training weeks from profile, readiness and logged evidence. Work spans signal processing, explainable clinical ML, predictive maintenance, RAG and deployed FastAPI / Streamlit / Cloud Run products.",
   nav: [
+    { label: "Work", href: "#work" },
     { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Certifications", href: "#certifications" },
-    { label: "Resume", href: "#resume" },
+    { label: "Credentials", href: "#credentials" },
     { label: "Contact", href: "#contact" },
   ],
-  protocol: [
-    { num: "01", label: "SAP", note: "Generative AI in production" },
-    { num: "02", label: "ARMATUS", note: "Founder · shipped iOS" },
-    { num: "03", label: "Research", note: "MSc AI, Distinction" },
-    { num: "04", label: "Built", note: "17 shipped systems" },
+  proof: [
+    { label: "SAP", detail: "Generative AI in production", meta: "Current role" },
+    { label: "ARMATUS", detail: "Founder · shipped on iOS", meta: "Current" },
+    { label: "MSc Artificial Intelligence", detail: "University of Essex", meta: "Distinction" },
+    { label: "Monterrey, MX", detail: "Open to US and remote roles", meta: "TN visa eligible" },
   ],
 } as const;
 

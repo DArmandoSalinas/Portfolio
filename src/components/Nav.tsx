@@ -1,41 +1,45 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LogoHalo } from "./LogoHalo";
 import { CloseIcon, DownloadIcon, MenuIcon } from "./Icons";
+import { LangSwitch } from "./LangSwitch";
 import { site } from "@/data/site";
+import { localePath } from "@/i18n/config";
+import { useI18n } from "@/i18n/context";
 
-const IDS = site.nav.map((n) => n.href.slice(1));
+const SECTION_IDS = ["work", "experience", "credentials", "contact"] as const;
 
 export function Nav() {
-  const [solid, setSolid] = useState(false);
+  const { locale, t } = useI18n();
+  const home = localePath(locale);
+  const [lifted, setLifted] = useState(false);
   const [active, setActive] = useState<string>("");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const sections = IDS.map((id) => document.getElementById(id)).filter(
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
       (el): el is HTMLElement => Boolean(el),
     );
-    if (!sections.length) return;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.6] },
-    );
-    sections.forEach((s) => io.observe(s));
-    return () => io.disconnect();
+    const onScroll = () => {
+      const y = window.scrollY;
+      setLifted(y > 8);
+
+      const line = window.innerHeight * 0.35;
+      let current = "";
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= line) current = s.id;
+      }
+      setActive(y < 80 ? "" : current);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -47,106 +51,96 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${
-        solid
-          ? "border-line/80 bg-black/82 backdrop-blur-[16px]"
-          : "border-transparent bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-200 ${
+        lifted
+          ? "border-b border-line bg-paper/80 backdrop-blur-xl"
+          : "border-b border-transparent bg-paper/70 backdrop-blur-md"
       }`}
       style={{ paddingTop: "var(--safe-top)" }}
     >
       <nav
-        className="shell flex items-center justify-between"
+        className="shell flex items-center justify-between gap-4 sm:gap-6"
         style={{ height: "var(--nav-h)" }}
-        aria-label="Primary"
+        aria-label={t.navAria}
       >
         <a
-          href="#top"
-          className="flex items-center gap-2.5"
-          aria-label={`${site.shortName} — back to top`}
+          href={`${home}#top`}
+          className="whitespace-nowrap text-[15px] font-semibold tracking-[-0.02em] text-ink"
+          aria-label={`${site.displayName} — ${t.backToTop}`}
         >
-          <LogoHalo size={26} bare />
-          <span className="text-[13px] font-extrabold tracking-[0.14em] uppercase">
-            Salinas
-          </span>
+          {site.displayName}
         </a>
 
-        {/* desktop */}
-        <ul className="hidden items-center gap-7 lg:flex">
-          {site.nav.map((item) => {
+        <ul className="hidden items-center gap-6 lg:flex">
+          {t.nav.map((item) => {
             const isActive = active === item.href.slice(1);
             return (
               <li key={item.href}>
                 <a
-                  href={item.href}
+                  href={`${home}${item.href}`}
                   aria-current={isActive ? "true" : undefined}
-                  className={`relative block py-2 text-[11px] font-extrabold uppercase tracking-[0.12em] transition-colors duration-150 ${
-                    isActive ? "text-primary" : "text-muted hover:text-ink"
+                  className={`text-[13.5px] font-medium transition-colors ${
+                    isActive ? "text-ink" : "text-muted hover:text-ink"
                   }`}
                 >
                   {item.label}
-                  <span
-                    aria-hidden
-                    className={`absolute -bottom-0.5 left-0 h-px bg-primary transition-all duration-240 ${
-                      isActive ? "w-full opacity-100" : "w-0 opacity-0"
-                    }`}
-                  />
                 </a>
               </li>
             );
           })}
           <li>
+            <LangSwitch />
+          </li>
+          <li>
             <a
               href={site.cv}
               download
-              className="btn btn-primary !px-4 !py-2 !text-[12px]"
+              className="btn btn-primary !px-4 !py-2 !text-[13.5px]"
             >
-              <DownloadIcon className="text-[13px]" />
-              CV
+              <DownloadIcon className="text-[14px]" />
+              {t.cv}
             </a>
           </li>
         </ul>
 
-        {/* mobile trigger */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          className="-mr-2 grid h-10 w-10 place-items-center rounded-full text-[20px] text-ink lg:hidden"
-        >
-          {open ? <CloseIcon /> : <MenuIcon />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <LangSwitch />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? t.closeMenu : t.openMenu}
+            className="-mr-2 grid h-11 w-11 place-items-center text-[21px] text-ink"
+          >
+            {open ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </nav>
 
-      {/* mobile sheet */}
-      <div
-        id="mobile-nav"
-        hidden={!open}
-        className="border-t border-line bg-black/97 backdrop-blur-xl lg:hidden"
-      >
-        <ul className="shell flex flex-col py-3">
-          {site.nav.map((item) => (
+      <div id="mobile-nav" hidden={!open} className="border-t border-line bg-paper lg:hidden">
+        <ul className="shell flex flex-col py-2">
+          {t.nav.map((item) => (
             <li key={item.href}>
               <a
-                href={item.href}
+                href={`${home}${item.href}`}
                 onClick={() => setOpen(false)}
-                className={`block border-b border-line/60 py-3.5 text-[13px] font-extrabold uppercase tracking-[0.12em] ${
-                  active === item.href.slice(1) ? "text-primary" : "text-ink"
+                className={`block border-b border-line py-4 text-[17px] font-medium ${
+                  active === item.href.slice(1) ? "text-signal" : "text-ink"
                 }`}
               >
                 {item.label}
               </a>
             </li>
           ))}
-          <li className="pt-4 pb-2">
+          <li className="py-5">
             <a
               href={site.cv}
               download
               onClick={() => setOpen(false)}
               className="btn btn-primary w-full"
             >
-              <DownloadIcon /> Download CV
+              <DownloadIcon /> {t.downloadCv}
             </a>
           </li>
         </ul>

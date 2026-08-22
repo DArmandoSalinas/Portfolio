@@ -1,129 +1,80 @@
 import { ArrowUpRight, GitHubIcon, PlayIcon } from "./Icons";
 import type { Project } from "@/data/projects";
+import type { Locale } from "@/i18n/config";
+import { categoryLabel, getUi } from "@/i18n/ui";
 
-type Props = { project: Project; variant?: "featured" | "compact" };
-
-export function ProjectCard({ project: p, variant = "compact" }: Props) {
-  const featured = variant === "featured";
-  const repos = p.repos ?? (p.repo ? [{ label: "Repository", url: p.repo }] : []);
+export function ProjectCard({
+  project: p,
+  locale,
+}: {
+  project: Project;
+  locale: Locale;
+}) {
+  const t = getUi(locale);
+  const repos = p.repos ?? (p.repo ? [{ label: t.repository, url: p.repo }] : []);
+  const links = [
+    ...(p.live ?? []).map((l) => ({ ...l, kind: "live" as const })),
+    ...repos.map((r) => ({ ...r, kind: "repo" as const })),
+    ...(p.video ? [{ label: t.walkthrough, url: p.video, kind: "video" as const }] : []),
+  ];
 
   return (
-    <article
-      className={`card card-linkable h-full ${featured ? "p-6 sm:p-7" : "p-5 sm:p-6"}`}
-    >
-      {/* categories */}
-      <ul className="mb-4 flex flex-wrap items-center gap-x-1.5 gap-y-1">
-        {p.categories.map((c) => (
-          <li
-            key={c}
-            className="text-[10.5px] font-extrabold uppercase tracking-[0.14em] text-primary/85 after:ml-1.5 after:text-faint after:content-['·'] last:after:content-['']"
-          >
-            {c}
-          </li>
-        ))}
-      </ul>
+    <li className="border-t border-line py-7">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h4 className="text-[17px] font-semibold text-ink">{p.title}</h4>
+        <p className="text-[13px] text-muted">
+          {p.categories.map((c, n) => (
+            <span key={c}>
+              {n > 0 && <span aria-hidden> · </span>}
+              <span className="whitespace-nowrap">{categoryLabel(locale, c)}</span>
+            </span>
+          ))}
+        </p>
+      </div>
 
-      <h3
-        className={`font-extrabold tracking-[-0.025em] text-ink ${
-          featured ? "text-[clamp(21px,2.8vw,27px)]" : "text-[19px]"
-        }`}
-      >
-        {p.title}
-      </h3>
-
-      <p
-        className={`mt-2 font-semibold leading-snug text-primary-soft text-pretty ${
-          featured ? "text-[16px]" : "text-[14.5px]"
-        }`}
-      >
+      <p className="mt-2 text-[15.5px] font-medium leading-[1.45] text-ink text-pretty">
         {p.hook}
       </p>
-
-      <p
-        className={`mt-3 leading-[1.6] text-ink/75 text-pretty ${
-          featured ? "text-[15.5px]" : "text-[14.5px]"
-        }`}
-      >
-        {p.body}
-      </p>
+      <p className="mt-2 text-[14.5px] leading-[1.55] text-body text-pretty">{p.body}</p>
 
       {p.metrics && p.metrics.length > 0 && (
-        <dl
-          className={`mt-5 grid gap-x-4 gap-y-4 border-t border-line pt-5 ${
-            featured
-              ? p.metrics.length >= 4
-                ? "grid-cols-2 sm:grid-cols-4"
-                : "grid-cols-2 sm:grid-cols-3"
-              : "grid-cols-2"
-          }`}
-        >
+        <p className="readout mt-3 text-[13px] leading-[1.7] text-muted">
           {p.metrics.map((m) => (
-            <div key={m.label} className="min-w-0">
-              <dt className="sr-only">{m.label}</dt>
-              <dd>
-                <span className={`metric-value block ${featured ? "" : "!text-[18px]"}`}>
-                  {m.value}
-                </span>
-                <span className="metric-label block">{m.label}</span>
-              </dd>
-            </div>
+            <span key={m.label} className="mr-4 inline-block whitespace-nowrap">
+              <span className="text-ink">{m.value}</span> {m.label}
+            </span>
           ))}
-        </dl>
-      )}
-
-      {p.note && (
-        <p className="mt-4 border-l-2 pl-3 text-[13px] leading-snug text-muted"
-          style={{ borderColor: "var(--orange-border)" }}>
-          {p.note}
         </p>
       )}
 
-      <ul className="mt-5 flex flex-wrap gap-1.5">
-        {p.stack.map((s) => (
-          <li key={s} className="chip">
-            {s}
-          </li>
-        ))}
-      </ul>
+      <p className="keys mt-3 text-[12.5px]">{p.stack.slice(0, 5).join("  ·  ")}</p>
 
-      {/* links pinned to the bottom so cards in a row align */}
-      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6">
-        {p.live?.map((l) => (
-          <a
-            key={l.url}
-            href={l.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[13px] font-bold text-primary transition-opacity hover:opacity-80"
-          >
-            {l.label}
-            <ArrowUpRight className="text-[14px]" />
-          </a>
-        ))}
-        {repos.map((r) => (
-          <a
-            key={r.url}
-            href={r.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-muted transition-colors hover:text-ink"
-          >
-            <GitHubIcon className="text-[14px]" />
-            {r.label}
-          </a>
-        ))}
-        {p.video && (
-          <a
-            href={p.video}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-muted transition-colors hover:text-ink"
-          >
-            <PlayIcon className="text-[14px]" />
-            Walkthrough
-          </a>
-        )}
-      </div>
-    </article>
+      {p.note && (
+        <p className="mt-2 text-[13px] leading-snug text-muted text-pretty">{p.note}</p>
+      )}
+
+      {links.length > 0 && (
+        <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+          {links.map((l) => (
+            <a
+              key={l.url}
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-1.5 text-[14px] ${
+                l.kind === "live"
+                  ? "link-signal"
+                  : "text-muted transition-colors hover:text-ink"
+              }`}
+            >
+              {l.kind === "repo" && <GitHubIcon className="text-[15px]" />}
+              {l.kind === "video" && <PlayIcon className="text-[15px]" />}
+              {l.label}
+              {l.kind === "live" && <ArrowUpRight className="text-[14px]" />}
+            </a>
+          ))}
+        </div>
+      )}
+    </li>
   );
 }

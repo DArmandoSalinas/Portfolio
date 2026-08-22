@@ -1,84 +1,73 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/i18n/context";
 
 type Props = {
   src: string;
   alt: string;
   className?: string;
   onOpen?: () => void;
-  /** Larger placeholder for the featured slot. */
-  large?: boolean;
   /** Resolved on the server — false renders a placeholder in the HTML itself. */
   exists?: boolean;
   /** Shown on the production placeholder so the tile still says something. */
   issuer?: string;
+  ratio?: string;
+  /** Thumbnail-sized: the placeholder drops its caption and keeps the glyph. */
+  compact?: boolean;
 };
 
 const isDev = process.env.NODE_ENV === "development";
 
 /**
- * Renders certificate artwork from /public/certs/.
+ * Certificate artwork on a recessed mat, the way a document sits in a frame.
  *
  * The existence check happens on the server, so a missing file never produces a
- * broken-image flash. What replaces it depends on the environment: locally you
- * get a drop-zone naming the exact file to add; in production you get a branded
- * issuer tile, so a gap in the archive still looks deliberate.
+ * broken-image flash. Locally you get a drop-zone naming the exact file to add;
+ * in production you get an issuer tile, so a gap still looks deliberate.
  */
 export function CertImage({
   src,
   alt,
   className = "",
   onOpen,
-  large,
   exists = true,
   issuer,
+  ratio = "aspect-[4/3]",
+  compact = false,
 }: Props) {
+  const { t } = useI18n();
   const [failed, setFailed] = useState(false);
   const filename = src.replace(/^\//, "");
 
+  const pad = compact ? "p-1.5" : "p-2";
+  const mat = `flex items-center justify-center overflow-hidden rounded-[var(--r-sm)] bg-sunk ${pad} ${ratio} ${className}`;
+
   if (!exists || failed) {
     return (
-      <div
-        className={`flex flex-col items-center justify-center gap-2.5 rounded-[var(--radius-md)] border px-4 text-center ${
-          isDev ? "border-dashed border-line bg-black/40" : "border-line"
-        } ${large ? "py-14" : "py-8"} ${className}`}
-        style={
-          isDev
-            ? undefined
-            : {
-                background:
-                  "linear-gradient(160deg, var(--orange-fill) 0%, rgba(28,28,30,0.9) 60%)",
-              }
-        }
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden
-          className={`h-6 w-6 ${isDev ? "text-faint" : "text-primary/70"}`}
-        >
-          <circle cx="12" cy="9.5" r="5.25" stroke="currentColor" strokeWidth="1.5" />
-          <path
-            d="M8.6 14.2 7.4 21l4.6-2.3 4.6 2.3-1.2-6.8"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-
-        {isDev ? (
-          <>
-            <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
-              Drop image here
-            </p>
+      <div className={`${mat} ${isDev ? "border border-dashed border-line-strong" : ""}`}>
+        <div className="flex min-w-0 flex-col items-center gap-2 px-2 text-center sm:px-4">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+            className={`text-muted ${compact ? "h-5 w-5" : "h-6 w-6"}`}
+          >
+            <circle cx="12" cy="9.5" r="5.25" stroke="currentColor" strokeWidth="1.5" />
+            <path
+              d="M8.6 14.2 7.4 21l4.6-2.3 4.6 2.3-1.2-6.8"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinejoin="round"
+            />
+          </svg>
+          {/* a thumbnail has no room for a caption — the glyph says "on file" */}
+          {compact ? null : isDev ? (
             <code className="text-[11px] break-all text-muted">public/{filename}</code>
-          </>
-        ) : (
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-muted">
-            {issuer ?? "Credential on file"}
-          </p>
-        )}
+          ) : (
+            <p className="label text-[11px]">{issuer ?? t.credentialOnFile}</p>
+          )}
+        </div>
       </div>
     );
   }
@@ -91,18 +80,18 @@ export function CertImage({
       loading="lazy"
       decoding="async"
       onError={() => setFailed(true)}
-      className={`w-full rounded-[var(--radius-md)] border border-line bg-white object-contain ${className}`}
+      className="h-full w-full object-contain object-center shadow-[0_2px_14px_rgba(20,26,34,0.14)]"
     />
   );
 
-  if (!onOpen) return img;
+  if (!onOpen) return <div className={mat}>{img}</div>;
 
   return (
     <button
       type="button"
       onClick={onOpen}
-      className="group block w-full cursor-zoom-in rounded-[var(--radius-md)] transition-transform duration-240 hover:scale-[1.01]"
-      aria-label={`Enlarge ${alt}`}
+      className={`${mat} cert-tile cursor-zoom-in`}
+      aria-label={t.enlarge(alt)}
     >
       {img}
     </button>
