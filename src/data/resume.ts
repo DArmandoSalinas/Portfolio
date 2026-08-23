@@ -230,18 +230,55 @@ export const cvEducation = [
   },
 ];
 
-/** SAP first, then vendor, then academic. QPR omitted from the engineering CV. */
-export const cvCerts = [
-  "SAP Certified: SAP Generative AI Developer (2026)",
-  "Databases and SQL for Data Science with Python — IBM (2026)",
-  "Google Analytics Certification — Google (2025)",
-  "Machine Learning Specialization — Stanford & DeepLearning.AI (2024)",
-  "ML Web App with Streamlit and Python — Coursera (2025)",
-  "Introduction to Generative AI — Google Cloud (2024)",
-  "AI For Everyone — DeepLearning.AI (2024)",
-  "CS50x: Introduction to Computer Science — Harvard (2022)",
-  "NanoLab — MIT.nano / Tec-MIT (2023)",
-  "MATLAB Onramp — MathWorks (2022)",
+export type CvCertGroup = { group: string; items: string[] };
+
+/**
+ * Full credential set from the site, grouped for a recruiter scan.
+ * The three Stanford ML courses are omitted: they are already the
+ * Machine Learning Specialization.
+ */
+export const cvCerts: CvCertGroup[] = [
+  {
+    group: "Professional",
+    items: [
+      "SAP Certified Associate — Generative AI Developer (2026)",
+      "SQL for Data Science with Python — IBM (2026)",
+      "Google Analytics Certification — Google (2025)",
+      "GA4 Data and Reports — Google (2025)",
+    ],
+  },
+  {
+    group: "Awards",
+    items: [
+      "Rockwell Automation Integration Recognition — Tec de Monterrey (2025)",
+    ],
+  },
+  {
+    group: "Specialization",
+    items: [
+      "Machine Learning Specialization — Stanford & DeepLearning.AI (2024)",
+    ],
+  },
+  {
+    group: "Courses",
+    items: [
+      "ML Web App with Streamlit and Python — Coursera (2025)",
+      "Breast Cancer Prediction Using ML — Coursera (2025)",
+      "Introduction to Generative AI — Google Cloud (2024)",
+      "AI For Everyone — DeepLearning.AI (2024)",
+      "Intro to Machine Learning — Kaggle (2024)",
+      "Python — Kaggle (2023)",
+      "CS50x: Introduction to Computer Science — Harvard (2022)",
+      "2023 NanoLab — MIT / Tec-MIT (2023)",
+      "MATLAB Onramp — MathWorks (2022)",
+    ],
+  },
+  {
+    group: "Additional",
+    items: [
+      "QPR Suicide Prevention Gatekeeper — Tec de Monterrey (2022)",
+    ],
+  },
 ];
 
 export const cvSpokenLanguages = "Spanish (native), English (professional), German (basic)";

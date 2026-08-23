@@ -243,16 +243,25 @@ export default async function ResumePage({
 
         <section>
           <Rule label={t.resumeSections.certs} />
-          <ul className="grid gap-x-8 gap-y-1 sm:grid-cols-2 print:grid-cols-2">
-            {cv.certs.map((c) => (
-              <li
-                key={c}
-                className="text-[13px] leading-[1.4] text-muted print:text-black"
-              >
-                {c}
-              </li>
+          <div className="grid gap-3 print:gap-1">
+            {cv.certs.map((g) => (
+              <div key={g.group}>
+                <p className="mb-1 text-[11.5px] font-bold uppercase tracking-[0.12em] text-ink print:hidden">
+                  {g.group}
+                </p>
+                <ul className="grid gap-x-8 gap-y-0.5 sm:grid-cols-2 print:grid-cols-2 print:gap-y-0">
+                  {g.items.map((c) => (
+                    <li
+                      key={c}
+                      className="text-[13px] leading-[1.4] text-muted print:text-black"
+                    >
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
       </article>
     </div>
