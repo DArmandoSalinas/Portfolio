@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.links.github }],
   creator: site.name,
   robots: { index: true, follow: true },
+  verification: {
+    google: "s1VKZ2-U-62ZS8eiZtybwJCnWiMnkNNATUW6eVS4vw8",
+  },
 };
 
 export const viewport: Viewport = {
