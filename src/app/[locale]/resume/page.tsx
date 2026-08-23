@@ -38,6 +38,34 @@ function Rule({ label }: { label: string }) {
   );
 }
 
+function host(url: string) {
+  return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}
+
+function ContactLine({
+  items,
+}: {
+  items: { href: string; label: string }[];
+}) {
+  return (
+    <p className="flex flex-wrap items-baseline gap-y-0.5 text-[12.5px] text-muted print:text-black">
+      {items.map((item, i) => (
+        <span key={item.href} className="inline-flex items-baseline">
+          {i > 0 && <span aria-hidden className="whitespace-pre text-muted print:text-black">{"  ·  "}</span>}
+          <a
+            href={item.href}
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="hover:text-ink print:text-black"
+          >
+            {item.label}
+          </a>
+        </span>
+      ))}
+    </p>
+  );
+}
+
 function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex gap-2 text-[13.5px] leading-[1.45] text-muted print:text-black">
@@ -90,10 +118,22 @@ export default async function ResumePage({
           <p className="mt-2 text-[12.5px] text-muted print:text-black">
             {t.resumeLocationLine}
           </p>
-          <p className="mt-1.5 text-[12.5px] text-muted print:text-black">
-            {site.email} | {site.phone} | linkedin.com/in/diego-armando-salinas-062599248
-            | github.com/DArmandoSalinas | armatus.app
-          </p>
+          <div className="mt-2 grid gap-0.5">
+            <ContactLine
+              items={[
+                { href: `mailto:${site.email}`, label: site.email },
+                { href: `tel:${site.phoneHref}`, label: site.phone },
+              ]}
+            />
+            <ContactLine
+              items={[
+                { href: site.url, label: host(site.url) },
+                { href: site.links.linkedin, label: "linkedin.com/in/diego-armando-salinas-062599248" },
+                { href: site.links.github, label: "github.com/DArmandoSalinas" },
+                { href: site.links.armatus, label: "armatus.app" },
+              ]}
+            />
+          </div>
         </header>
 
         <section className="mb-6">
@@ -203,9 +243,16 @@ export default async function ResumePage({
 
         <section>
           <Rule label={t.resumeSections.certs} />
-          <p className="text-[13px] leading-[1.5] text-muted print:text-black">
-            {cv.certs.join("  ·  ")}
-          </p>
+          <ul className="grid gap-x-8 gap-y-1 sm:grid-cols-2 print:grid-cols-2">
+            {cv.certs.map((c) => (
+              <li
+                key={c}
+                className="text-[13px] leading-[1.4] text-muted print:text-black"
+              >
+                {c}
+              </li>
+            ))}
+          </ul>
         </section>
       </article>
     </div>
