@@ -10,10 +10,10 @@ const es: Role[] = [
     location: "San Pedro Garza García, N.L.",
     current: true,
     summary:
-      "Diseña y despliega IA generativa que automatiza el reporte de fallas técnicas: mejor categorización de incidentes, respuesta más rápida.",
+      "Diseño y despliego IA generativa que automatiza el reporte de fallas técnicas: mejor categorización de incidentes, respuesta más rápida.",
     points: [
-      "Construye servicios de GenAI sobre SAP Business AI y patrones de extensión de BTP.",
-      "Trabaja con LLMs de primer nivel a través de SAP AI Core, AI Launchpad y el generative AI hub.",
+      "Construyo servicios de GenAI sobre SAP Business AI y patrones de extensión de BTP.",
+      "Trabajo con LLMs de primer nivel a través de SAP AI Core, AI Launchpad y el generative AI hub.",
       "SAP Certified — SAP Generative AI Developer.",
     ],
     tags: ["IA generativa", "SAP BTP", "AI Core", "LLMs"],
@@ -26,7 +26,7 @@ const es: Role[] = [
     period: "may 2026 — Actualidad",
     current: true,
     summary:
-      "Un coach de iOS de consumo con GenAI que arma la semana de entrenamiento en lugar de servir una plantilla.",
+      "Fundé un coach de iOS de consumo con GenAI que arma la semana de entrenamiento en lugar de servir una plantilla.",
     points: [
       "El onboarding profundo — metas, equipo, lesiones, historial, estilo de vida — se vuelve el modelo del atleta.",
       "Señales diarias (energía, sueño, tiempo) y sesiones registradas reconstruyen el plan con evidencia.",
@@ -42,11 +42,11 @@ const es: Role[] = [
     period: "sep 2025 — dic 2025",
     location: "San Pedro Garza García, N.L.",
     summary:
-      "Llevó ideas de IA a MVPs que funcionan: estrategia, análisis, ingeniería de features, entrenamiento, evaluación y despliegue.",
+      "Llevé ideas de IA a MVPs que funcionan: estrategia, análisis, ingeniería de features, entrenamiento, evaluación y despliegue.",
     points: [
-      "Segmentación avanzada de contactos para afinar la estrategia de engagement.",
-      "Diagnósticos de carga y eficiencia pensados para decidir, no para un dashboard.",
-      "Publicado como servicios Streamlit contenedorizados en Google Cloud Run.",
+      "Construí segmentación avanzada de contactos para afinar la estrategia de engagement.",
+      "Publiqué diagnósticos de carga y eficiencia pensados para decidir, no para un dashboard.",
+      "Los desplegué como servicios Streamlit contenedorizados en Google Cloud Run.",
     ],
     tags: ["Clustering", "Streamlit", "Docker", "Cloud Run"],
   },
@@ -57,7 +57,7 @@ const es: Role[] = [
     period: "nov 2024 — sep 2025",
     location: "Colchester, Reino Unido",
     summary:
-      "Machine learning de punta a punta para reconocimiento de emoción a partir de features de HRV derivadas de señales PPG.",
+      "Construí machine learning de punta a punta para reconocimiento de emoción a partir de features de HRV derivadas de señales PPG.",
     points: [
       "Filtrado Butterworth, extracción de IBI y features de HRV en tiempo, frecuencia y no lineales.",
       "Validación leave-one-participant-out y leave-one-group-out en 62 participantes.",

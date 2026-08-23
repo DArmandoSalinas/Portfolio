@@ -1,5 +1,5 @@
 import { Portrait } from "./Portrait";
-import { ArrowRight, DownloadIcon } from "./Icons";
+import { ArrowRight } from "./Icons";
 import { site } from "@/data/site";
 import { getContent } from "@/i18n/content";
 import type { Locale } from "@/i18n/config";
@@ -42,8 +42,11 @@ export function Hero({ locale }: { locale: Locale }) {
             <a href="#contact" className="btn btn-primary">
               {t.getInTouch} <ArrowRight />
             </a>
-            <a href={site.cv} download className="btn btn-outline">
-              <DownloadIcon /> {t.downloadCv}
+            <a href="#work" className="btn btn-outline">
+              {t.seeWork}
+            </a>
+            <a href={site.cv} download className="text-[15px] font-medium text-signal hover:underline">
+              {t.downloadCv}
             </a>
           </div>
         </div>

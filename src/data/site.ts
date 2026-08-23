@@ -12,11 +12,11 @@ export const site = {
     "I studied mechatronics at Tecnológico de Monterrey and an MSc in Artificial Intelligence with Distinction at Essex. I work on Generative AI at SAP, and I founded ARMATUS, a training coach on iOS.",
   ],
   location: "Monterrey, MX",
-  workAuth: "Open to US roles — TN visa eligible",
+  workAuth: "Open to US roles and project work — TN visa eligible",
   email: "salinas.diegoarmando03@gmail.com",
   phone: "+52 81 1988 3223",
   phoneHref: "+528119883223",
-  url: "https://diegosalinas.vercel.app",
+  url: "https://www.diegoarmandosalinas.site",
   links: {
     github: "https://github.com/DArmandoSalinas",
     linkedin: "https://www.linkedin.com/in/diego-armando-salinas-062599248/",
@@ -39,7 +39,7 @@ export const site = {
     { label: "SAP", detail: "Generative AI in production", meta: "Current role" },
     { label: "ARMATUS", detail: "Founder · shipped on iOS", meta: "Current" },
     { label: "MSc Artificial Intelligence", detail: "University of Essex", meta: "Distinction" },
-    { label: "Monterrey, MX", detail: "Open to US and remote roles", meta: "TN visa eligible" },
+    { label: "Monterrey, MX", detail: "Open to roles and project work", meta: "TN visa eligible" },
   ],
 } as const;
 

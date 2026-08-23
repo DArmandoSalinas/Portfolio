@@ -4,7 +4,7 @@ Personal site for an AI & Machine Learning engineer. White paper, cobalt signal.
 The register of a calibration lab: graph paper, a living waveform drawn from the
 HRV and machine-health work, numbers you can audit.
 
-**Live:** _add the Vercel URL here, then update `site.url` in `src/data/site.ts`._
+**Live:** https://www.diegoarmandosalinas.site
 
 ---
 
@@ -33,9 +33,8 @@ npm run shots        # headless Chrome screenshots of every section
 1. Push this repo to GitHub.
 2. Import it at [vercel.com/new](https://vercel.com/new) — the Next.js preset is
    detected automatically; no environment variables are required.
-3. After the first deploy, set `site.url` in `src/data/site.ts` to the real
-   domain so canonical URLs, `sitemap.xml`, `robots.txt` and Open Graph tags
-   point at the right place.
+3. Canonical URLs, `sitemap.xml`, `robots.txt` and Open Graph tags use
+   `site.url` in `src/data/site.ts` (`https://www.diegoarmandosalinas.site`).
 
 ---
 

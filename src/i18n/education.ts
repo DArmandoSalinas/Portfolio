@@ -34,7 +34,7 @@ const es: Education[] = [
       "Materiales y manufactura",
       "Pensamiento computacional",
     ],
-    certificate: "/education/titulo-mecatronica-limpio.png",
+    certificate: "/certs/tec-mecatronica.jpg",
     certificateAlt: "Título de Ingeniero en Mecatrónica, Tecnológico de Monterrey",
   },
 ];

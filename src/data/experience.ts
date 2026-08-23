@@ -20,10 +20,10 @@ export const experience: Role[] = [
     location: "San Pedro Garza García, NL",
     current: true,
     summary:
-      "Designs and deploys Generative AI that automates technical fault reporting — sharper incident categorization, faster response.",
+      "I design and deploy Generative AI that automates technical fault reporting — sharper incident categorization, faster response.",
     points: [
-      "Builds GenAI services on SAP Business AI and BTP extension patterns.",
-      "Works with leading LLMs through SAP AI Core, AI Launchpad and the generative AI hub.",
+      "I build GenAI services on SAP Business AI and BTP extension patterns.",
+      "I work with leading LLMs through SAP AI Core, AI Launchpad and the generative AI hub.",
       "SAP Certified — SAP Generative AI Developer.",
     ],
     tags: ["Generative AI", "SAP BTP", "AI Core", "LLMs"],
@@ -36,7 +36,7 @@ export const experience: Role[] = [
     period: "May 2026 — Present",
     current: true,
     summary:
-      "A consumer GenAI iOS coach that architects the training week instead of serving a template.",
+      "I founded a consumer GenAI iOS coach that architects the training week instead of serving a template.",
     points: [
       "Deep onboarding — goals, equipment, injuries, history, lifestyle — becomes the athlete model.",
       "Daily signals (energy, sleep, time) and logged sessions rebuild the plan from evidence.",
@@ -52,11 +52,11 @@ export const experience: Role[] = [
     period: "Sep 2025 — Dec 2025",
     location: "San Pedro Garza García, NL",
     summary:
-      "Took AI ideas to working MVPs — strategy, analysis, feature engineering, training, evaluation and deployment.",
+      "I took AI ideas to working MVPs — strategy, analysis, feature engineering, training, evaluation and deployment.",
     points: [
-      "Advanced contact segmentation to sharpen engagement strategy.",
-      "Workload and efficiency diagnostics built for decision-making, not dashboards.",
-      "Shipped as containerized Streamlit services on Google Cloud Run.",
+      "I built advanced contact segmentation to sharpen engagement strategy.",
+      "I shipped workload and efficiency diagnostics built for decision-making, not dashboards.",
+      "I deployed them as containerized Streamlit services on Google Cloud Run.",
     ],
     tags: ["Clustering", "Streamlit", "Docker", "Cloud Run"],
   },
@@ -67,7 +67,7 @@ export const experience: Role[] = [
     period: "Nov 2024 — Sep 2025",
     location: "Colchester, UK",
     summary:
-      "End-to-end machine learning for emotion recognition from HRV features derived from PPG signals.",
+      "I built end-to-end machine learning for emotion recognition from HRV features derived from PPG signals.",
     points: [
       "Butterworth filtering, IBI extraction, and time / frequency / non-linear HRV features.",
       "Leave-one-participant-out and leave-one-group-out validation across 62 participants.",

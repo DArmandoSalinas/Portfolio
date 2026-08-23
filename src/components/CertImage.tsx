@@ -77,7 +77,7 @@ export function CertImage({
     <img
       src={src}
       alt={alt}
-      loading="lazy"
+      loading={compact ? "lazy" : "eager"}
       decoding="async"
       onError={() => setFailed(true)}
       className="h-full w-full object-contain object-center shadow-[0_2px_14px_rgba(20,26,34,0.14)]"

@@ -48,7 +48,7 @@ export const education: Education[] = [
       "Materials and manufacturing",
       "Computational thinking",
     ],
-    certificate: "/education/titulo-mecatronica-limpio.png",
+    certificate: "/certs/tec-mecatronica.jpg",
     certificateAlt:
       "Ingeniero en Mecatrónica degree certificate, Tecnológico de Monterrey",
   },

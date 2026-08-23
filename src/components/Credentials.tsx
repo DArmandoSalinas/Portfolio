@@ -23,6 +23,7 @@ type Headline = {
   note: string;
   image?: string;
   alt: string;
+  ratio?: string;
 };
 
 export function Credentials({
@@ -60,6 +61,7 @@ export function Credentials({
         note: education[0].detail,
         image: education[0].certificate,
         alt: education[0].certificateAlt ?? education[0].degree,
+        ratio: "aspect-[4/5]",
       },
       {
         id: "mecatronica",
@@ -69,6 +71,7 @@ export function Credentials({
         note: education[1].detail,
         image: education[1].certificate,
         alt: education[1].certificateAlt ?? education[1].degree,
+        ratio: "aspect-[4/5]",
       },
       {
         id: "sap",
@@ -125,7 +128,7 @@ export function Credentials({
                         ? () => setShown({ src: h.image!, caption: `${h.title} — ${h.issuer}` })
                         : undefined
                     }
-                    ratio="aspect-[4/3]"
+                    ratio={h.ratio ?? "aspect-[4/3]"}
                     className="w-full rounded-none"
                   />
                 )}
@@ -176,16 +179,18 @@ export function Credentials({
                         key={c.id}
                         className="flex items-start gap-4 border-b border-line py-6"
                       >
-                        <CertImage
-                          src={c.image}
-                          alt={`${c.title} ${t.certificate.toLowerCase()}`}
-                          exists={have.has(c.image)}
-                          issuer={c.issuer}
-                          onOpen={have.has(c.image) ? () => open(c) : undefined}
-                          compact
-                          ratio="aspect-[4/3]"
-                          className="w-28 shrink-0 sm:w-36"
-                        />
+                        {have.has(c.image) && (
+                          <CertImage
+                            src={c.image}
+                            alt={`${c.title} ${t.certificate.toLowerCase()}`}
+                            exists
+                            issuer={c.issuer}
+                            onOpen={() => open(c)}
+                            compact
+                            ratio="aspect-[4/3]"
+                            className="w-28 shrink-0 sm:w-36"
+                          />
+                        )}
                         <div className="min-w-0 flex-1">
                           <p className="text-[17px] font-semibold leading-snug tracking-[-0.015em] text-ink text-pretty">
                             {c.title}

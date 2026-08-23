@@ -16,6 +16,7 @@ export type Ui = {
   downloadCv: string;
   cv: string;
   getInTouch: string;
+  seeWork: string;
   emailMe: string;
   viewResume: string;
   current: string;
@@ -81,6 +82,7 @@ export const ui: Record<Locale, Ui> = {
     downloadCv: "Download CV",
     cv: "CV",
     getInTouch: "Get in touch",
+    seeWork: "See selected work",
     emailMe: "Email me",
     viewResume: "View résumé",
     current: "Current",
@@ -138,7 +140,7 @@ export const ui: Record<Locale, Ui> = {
     credentials: {
       label: "Credentials",
       title: "Education and certifications",
-      lead: "Every document below is the original. Click a scan to open it full size.",
+      lead: "Degrees, the SAP credential, and the industrial award up front. Click a scan to open it full size.",
     },
     toolkit: {
       label: "Toolkit",
@@ -148,7 +150,7 @@ export const ui: Record<Locale, Ui> = {
     contact: {
       label: "Contact",
       title: "Get in touch",
-      lead: "Open to AI and ML engineering roles in Mexico and the United States. TN visa eligible — happy to relocate or work remote.",
+      lead: "Open to AI and ML engineering roles in Mexico and the United States, and to product or consulting work. TN visa eligible — happy to relocate or work remote.",
     },
     earlierTitle: "Engineering roots and smaller builds",
     filters: {
@@ -181,6 +183,7 @@ export const ui: Record<Locale, Ui> = {
     downloadCv: "Descargar CV",
     cv: "CV",
     getInTouch: "Hablemos",
+    seeWork: "Ver trabajo seleccionado",
     emailMe: "Escríbeme",
     viewResume: "Ver currículum",
     current: "Actual",
@@ -239,7 +242,7 @@ export const ui: Record<Locale, Ui> = {
     credentials: {
       label: "Credenciales",
       title: "Educación y certificaciones",
-      lead: "Cada documento de abajo es el original. Haz clic en el escaneo para verlo a tamaño completo.",
+      lead: "Los títulos, la credencial de SAP y el reconocimiento industrial van primero. Haz clic en un escaneo para verlo a tamaño completo.",
     },
     toolkit: {
       label: "Herramientas",
@@ -249,7 +252,7 @@ export const ui: Record<Locale, Ui> = {
     contact: {
       label: "Contacto",
       title: "Hablemos",
-      lead: "Abierto a roles de ingeniería de IA y ML en México y Estados Unidos. Elegible a visa TN — dispuesto a reubicarme o trabajar en remoto.",
+      lead: "Abierto a roles de ingeniería de IA y ML en México y Estados Unidos, y a trabajo de producto o consultoría. Elegible a visa TN — dispuesto a reubicarme o trabajar en remoto.",
     },
     earlierTitle: "Raíces de ingeniería y proyectos menores",
     filters: {
