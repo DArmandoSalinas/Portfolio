@@ -11,7 +11,7 @@
  */
 
 export const cvSummary =
-  "AI & Machine Learning Engineer, MSc Artificial Intelligence (Distinction), who ships complete systems — data pipeline, model, API, interface, cloud — not notebooks. Builds generative AI at SAP to automate technical fault reporting and founded ARMATUS, a production iOS coach. Delivered predictive maintenance at 16.74-cycle RMSE and R² 0.825 on NASA C-MAPSS via FastAPI and a LangGraph multi-agent layer on Cloud Run. Monterrey, Mexico; TN visa eligible for United States roles.";
+  "AI & Machine Learning Engineer, MSc Artificial Intelligence (Distinction). Ships complete systems — data pipeline, model, API, interface, cloud — not notebooks. Builds generative AI at SAP to automate technical fault reporting and founded ARMATUS, a production iOS training coach. Based in Monterrey, Mexico; TN visa eligible for United States roles.";
 
 export type CvRole = {
   title: string;

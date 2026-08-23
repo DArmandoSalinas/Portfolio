@@ -12,7 +12,7 @@ import {
 import type { Locale } from "./config";
 
 const summaryEs =
-  "Ingeniero de IA y Machine Learning, MSc in Artificial Intelligence (Distinction), que entrega sistemas completos — pipeline de datos, modelo, API, interfaz, nube — no notebooks. Construye IA generativa en SAP para automatizar el reporte de fallas técnicas y fundó ARMATUS, un coach de iOS en producción. Entregó mantenimiento predictivo con RMSE de 16.74 ciclos y R² 0.825 en NASA C-MAPSS vía FastAPI y una capa multi-agente LangGraph en Cloud Run. Monterrey, México; elegible a visa TN para roles en Estados Unidos.";
+  "Ingeniero de IA y Machine Learning, MSc in Artificial Intelligence (Distinction). Entrega sistemas completos — pipeline de datos, modelo, API, interfaz, nube — no notebooks. Construye IA generativa en SAP para automatizar el reporte de fallas técnicas y fundó ARMATUS, un coach de iOS en producción. Con base en Monterrey, México; elegible a visa TN para roles en Estados Unidos.";
 
 const rolesEs: CvRole[] = [
   {
