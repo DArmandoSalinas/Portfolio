@@ -32,6 +32,14 @@ export type Project = {
   featured: boolean;
   /** Tightened copy used in the spotlight rows, where space is the constraint. */
   brief?: string;
+  gallery?: {
+    kind: "phones" | "video";
+    tone?: "light" | "dark";
+    shots?: { src: string; alt: string; label?: string }[];
+    src?: string;
+    poster?: string;
+    caption?: string;
+  };
 };
 
 export const projects: Project[] = [
@@ -55,6 +63,17 @@ export const projects: Project[] = [
       { label: "armatus.app", url: "https://www.armatus.app/" },
       { label: "Web coach", url: "https://armatus-web-coach.vercel.app" },
     ],
+    gallery: {
+      kind: "phones",
+      tone: "dark",
+      shots: [
+        {
+          src: "/work/armatus/coach.jpg",
+          alt: "ARMATUS Coach on iPhone — daily readiness check before the session",
+          label: "Coach",
+        },
+      ],
+    },
     featured: true,
   },
   {
@@ -85,6 +104,42 @@ export const projects: Project[] = [
       "Railway",
     ],
     note: "In development — App Store polish stage. A logging and reminder tool, not a medical device: it never diagnoses, prescribes or recommends. Private repository.",
+    gallery: {
+      kind: "phones",
+      tone: "light",
+      shots: [
+        {
+          src: "/work/coazon/today.jpg",
+          alt: "COAZON today — dose checklist and next medication",
+          label: "Hoy",
+        },
+        {
+          src: "/work/coazon/scan-review.jpg",
+          alt: "COAZON prescription scan — review and confirm extracted medicines",
+          label: "Receta",
+        },
+        {
+          src: "/work/coazon/medicines.jpg",
+          alt: "COAZON medicines list with scan-prescription action",
+          label: "Medicinas",
+        },
+        {
+          src: "/work/coazon/metrics.jpg",
+          alt: "COAZON metrics — blood-pressure trend with in-range band",
+          label: "Métricas",
+        },
+        {
+          src: "/work/coazon/ai-report.jpg",
+          alt: "COAZON report — bounded AI summary for the next appointment",
+          label: "Resumen IA",
+        },
+        {
+          src: "/work/coazon/report.jpg",
+          alt: "COAZON report — medications, studies, and export PDF",
+          label: "Reporte",
+        },
+      ],
+    },
     featured: true,
   },
   {
@@ -106,6 +161,12 @@ export const projects: Project[] = [
     stack: ["XGBoost", "SHAP", "FastAPI", "Streamlit", "LangGraph", "OpenAI", "MLflow", "Cloud Run"],
     repo: "https://github.com/DArmandoSalinas/predictive-maintenance-rul",
     live: [{ label: "Live dashboard", url: "https://rul-dashboard-368785016309.us-central1.run.app" }],
+    gallery: {
+      kind: "video",
+      src: "/work/engines-health-monitor.mp4",
+      poster: "/work/engines-health-monitor.jpg",
+      caption: "Fleet dashboard walkthrough — remaining useful life, SHAP, and the briefing agent",
+    },
     featured: true,
   },
   {

@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { ProjectMedia } from "./ProjectMedia";
 import { ArrowUpRight, GitHubIcon, PlayIcon } from "./Icons";
 import type { Project } from "@/data/projects";
 import { categoryLabel, getUi } from "@/i18n/ui";
@@ -20,16 +21,17 @@ export function SpotlightProject({
 
   return (
     <Reveal as="li" index={index}>
-      <article className="entry grid gap-x-12 gap-y-6 p-7 sm:p-9 md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]">
-        <div>
-          <h3 className="h3">{p.title}</h3>
-          <p className="mt-2 text-[13.5px] text-muted">
-            {p.categories.map((c) => categoryLabel(locale, c)).join(" · ")}
-          </p>
-          {live.length > 0 && <p className="flag mt-3">{t.live}</p>}
-        </div>
+      <article className="entry overflow-hidden p-7 sm:p-9">
+        <div className="grid gap-x-12 gap-y-6 md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]">
+          <div>
+            <h3 className="h3">{p.title}</h3>
+            <p className="mt-2 text-[13.5px] text-muted">
+              {p.categories.map((c) => categoryLabel(locale, c)).join(" · ")}
+            </p>
+            {live.length > 0 && <p className="flag mt-3">{t.live}</p>}
+          </div>
 
-        <div className="max-w-[62ch]">
+          <div className="max-w-[62ch]">
           <p className="text-[18px] font-medium leading-snug text-ink text-pretty">{p.hook}</p>
 
           {p.problem && (
@@ -96,7 +98,9 @@ export function SpotlightProject({
               )}
             </div>
           )}
+          </div>
         </div>
+        {p.gallery && <ProjectMedia gallery={p.gallery} locale={locale} />}
       </article>
     </Reveal>
   );

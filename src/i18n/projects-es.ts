@@ -4,6 +4,7 @@ export type ProjectOverlay = Partial<
   Pick<Project, "hook" | "problem" | "body" | "brief" | "note" | "live" | "repos">
 > & {
   metrics?: { label: string }[];
+  galleryCaption?: string;
 };
 
 export const projectsEs: Record<string, ProjectOverlay> = {
@@ -52,6 +53,8 @@ export const projectsEs: Record<string, ProjectOverlay> = {
       { label: "RMSE de validación" },
     ],
     live: [{ label: "Tablero en vivo", url: "https://rul-dashboard-368785016309.us-central1.run.app" }],
+    galleryCaption:
+      "Recorrido del dashboard de flota — vida útil restante, SHAP y el agente de briefing",
   },
   rag: {
     hook: "Habla con tus PDFs. Cada respuesta muestra el fragmento del que salió.",
