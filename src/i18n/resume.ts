@@ -13,11 +13,11 @@ import {
 import type { Locale } from "./config";
 
 const summaryEs =
-  "Ingeniero de IA y Machine Learning, MSc in Artificial Intelligence (Distinction). Entrega sistemas completos — pipeline de datos, modelo, API, interfaz, nube — no notebooks. Construye IA generativa en SAP para automatizar el reporte de fallas técnicas y fundó ARMATUS, un coach de iOS en producción. Con base en Monterrey, México; elegible a visa TN para roles en Estados Unidos.";
+  "Ingeniero de IA y Machine Learning, MSc in Artificial Intelligence (Distinction). Entrega sistemas completos — pipeline de datos, modelo, API, interfaz, nube — no notebooks. Construye IA generativa en SAP para automatizar el reporte de fallas técnicas y fundó ARMATUS, un coach de iOS en producción. Formación en mecatrónica: procesamiento de señales, analítica predictiva y monitoreo en tiempo real.";
 
 const rolesEs: CvRole[] = [
   {
-    title: "Ingeniero de Machine Learning e IA",
+    title: "Ingeniero de IA y Machine Learning",
     org: "SAP",
     period: "ene 2026 — Actualidad",
     location: "San Pedro Garza García, N.L., México",
@@ -132,7 +132,7 @@ const educationEs = [
     school: "University of Essex, Reino Unido",
     period: "2024 — 2025",
     notes: [
-      "Materias: Machine Learning; Intelligent Systems and Robotics; Data Science and Decision Making; Neural Networks; Natural Language Engineering. Tesis: reconocimiento de emoción por variabilidad de la frecuencia cardíaca a partir de señales PPG.",
+      "Tesis: Analysis of Heart Rate Variability using PPG signals to detect and predict emotions through Machine Learning. Materias: Machine Learning; Intelligent Systems and Robotics; Data Science and Decision Making; Neural Networks; Natural Language Engineering.",
     ],
   },
   {
@@ -156,6 +156,7 @@ const certsEs: CvCertGroup[] = [
   {
     group: "Distinciones",
     items: [
+      "1.er lugar — Tec Expo Ingenierías, Tecnológico de Monterrey (2025)",
       "Rockwell Automation Integration Recognition — Tec de Monterrey (2025)",
     ],
   },

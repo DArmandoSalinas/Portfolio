@@ -121,7 +121,7 @@ export const ui: Record<Locale, Ui> = {
     resumeTitle: "Resume",
     resumeDescription: "Curriculum vitae for Diego Armando Salinas Lugo — AI & Machine Learning Engineer.",
     resumeLocationLine:
-      "Monterrey, Mexico | TN Visa Eligible for United States roles | Open to relocation and remote",
+      "Mexican citizen · Monterrey, Mexico · TN visa eligible (USMCA) for United States roles · Open to relocation and remote",
     resumeSections: {
       summary: "Professional Summary",
       skills: "Technical Skills",
@@ -229,7 +229,7 @@ export const ui: Record<Locale, Ui> = {
     resumeDescription:
       "Currículum de Diego Armando Salinas Lugo — Ingeniero de IA y Machine Learning.",
     resumeLocationLine:
-      "Monterrey, México | Elegible a visa TN para Estados Unidos | Abierto a reubicación y remoto",
+      "Ciudadano mexicano · Monterrey, México · Elegible a visa TN (T-MEC) para Estados Unidos · Abierto a reubicación y remoto",
     resumeSections: {
       summary: "Resumen profesional",
       skills: "Habilidades técnicas",

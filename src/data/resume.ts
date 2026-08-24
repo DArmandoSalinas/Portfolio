@@ -11,7 +11,7 @@
  */
 
 export const cvSummary =
-  "AI & Machine Learning Engineer, MSc Artificial Intelligence (Distinction). Ships complete systems — data pipeline, model, API, interface, cloud — not notebooks. Builds generative AI at SAP to automate technical fault reporting and founded ARMATUS, a production iOS training coach. Based in Monterrey, Mexico; TN visa eligible for United States roles.";
+  "AI & Machine Learning Engineer, MSc Artificial Intelligence (Distinction). Ships complete systems — data pipeline, model, API, interface, cloud — not notebooks. Builds generative AI at SAP to automate technical fault reporting and founded ARMATUS, a production iOS training coach. Mechatronics background in signal processing, predictive analytics and real-time monitoring.";
 
 export type CvRole = {
   title: string;
@@ -23,7 +23,7 @@ export type CvRole = {
 
 export const cvRoles: CvRole[] = [
   {
-    title: "Machine Learning & AI Engineer",
+    title: "AI & Machine Learning Engineer",
     org: "SAP",
     period: "Jan 2026 — Present",
     location: "San Pedro Garza García, NL, Mexico",
@@ -219,7 +219,7 @@ export const cvEducation = [
     school: "University of Essex, United Kingdom",
     period: "2024 — 2025",
     notes: [
-      "Modules: Machine Learning; Intelligent Systems and Robotics; Data Science and Decision Making; Neural Networks; Natural Language Engineering. Thesis: heart-rate-variability emotion recognition from PPG signals.",
+      "Thesis: Analysis of Heart Rate Variability using PPG signals to detect and predict emotions through Machine Learning. Modules: Machine Learning; Intelligent Systems and Robotics; Data Science and Decision Making; Neural Networks; Natural Language Engineering.",
     ],
   },
   {
@@ -250,6 +250,7 @@ export const cvCerts: CvCertGroup[] = [
   {
     group: "Awards",
     items: [
+      "1st place — Tec Expo Ingenierías, Tecnológico de Monterrey (2025)",
       "Rockwell Automation Integration Recognition — Tec de Monterrey (2025)",
     ],
   },
