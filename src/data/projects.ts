@@ -215,14 +215,19 @@ export const projects: Project[] = [
           label: "Historial",
         },
         {
-          src: "/work/coazon/12-ai-report.jpg",
-          alt: "COAZON report — bounded AI summary for the next appointment",
-          label: "Resumen IA",
+          src: "/work/coazon/12-assistant.jpg",
+          alt: "COAZON assistant — bounded answers about the care plan, never a diagnosis",
+          label: "Asistente",
         },
         {
           src: "/work/coazon/13-report.jpg",
-          alt: "COAZON report — medications, studies, and export PDF",
+          alt: "COAZON report — 30-day adherence and patient data for the next visit",
           label: "Reporte",
+        },
+        {
+          src: "/work/coazon/13b-ai-report.jpg",
+          alt: "COAZON report — bounded AI summary for the next appointment",
+          label: "Resumen IA",
         },
         {
           src: "/work/coazon/14-pdf.jpg",
