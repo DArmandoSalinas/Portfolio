@@ -41,7 +41,6 @@ export function ProjectMedia({
   if (shots.length === 0) return null;
 
   const dark = gallery.tone === "dark";
-  const solo = shots.length === 1;
 
   return (
     <>
@@ -50,20 +49,9 @@ export function ProjectMedia({
           dark ? "bg-[#14161a]" : "bg-sunk"
         }`}
       >
-        <ul
-          className={`flex snap-x snap-mandatory items-end gap-4 px-5 py-6 sm:gap-5 sm:px-7 sm:py-8 ${
-            solo ? "justify-center" : "min-w-min"
-          }`}
-        >
+        <ul className="flex min-w-min snap-x snap-mandatory items-end gap-3.5 px-5 py-6 sm:gap-4 sm:px-7 sm:py-8">
           {shots.map((shot) => (
-            <li
-              key={shot.src}
-              className={
-                solo
-                  ? "w-[min(16.5rem,58%)]"
-                  : "w-[8.8rem] shrink-0 snap-start sm:w-[10.4rem]"
-              }
-            >
+            <li key={shot.src} className="w-[8.4rem] shrink-0 snap-start sm:w-[9.6rem]">
               <button
                 type="button"
                 onClick={() => setShown({ src: shot.src, caption: shot.alt })}

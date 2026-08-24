@@ -68,9 +68,54 @@ export const projects: Project[] = [
       tone: "dark",
       shots: [
         {
-          src: "/work/armatus/coach.jpg",
-          alt: "ARMATUS Coach on iPhone — daily readiness check before the session",
+          src: "/work/armatus/01.jpg",
+          alt: "ARMATUS Coach — daily readiness check before the session",
           label: "Coach",
+        },
+        {
+          src: "/work/armatus/02.jpg",
+          alt: "ARMATUS weekly plan — training and sport mapped by day",
+          label: "My Plan",
+        },
+        {
+          src: "/work/armatus/03.jpg",
+          alt: "ARMATUS weekly plan rationale — why this week is built this way",
+          label: "Rationale",
+        },
+        {
+          src: "/work/armatus/04.jpg",
+          alt: "ARMATUS Journey — this week's sessions, volume, and streak",
+          label: "Journey",
+        },
+        {
+          src: "/work/armatus/05.jpg",
+          alt: "ARMATUS Journey — top exercises and maxes over 90 days",
+          label: "PRs",
+        },
+        {
+          src: "/work/armatus/06.jpg",
+          alt: "ARMATUS Journey — strength trend and recent sessions",
+          label: "Strength",
+        },
+        {
+          src: "/work/armatus/07.jpg",
+          alt: "ARMATUS athlete profile — complete athlete model",
+          label: "Profile",
+        },
+        {
+          src: "/work/armatus/08.jpg",
+          alt: "ARMATUS Coach — generate today's workout from readiness and time",
+          label: "Generate",
+        },
+        {
+          src: "/work/armatus/09.jpg",
+          alt: "ARMATUS Coach — conversational session brief",
+          label: "Chat",
+        },
+        {
+          src: "/work/armatus/10.jpg",
+          alt: "ARMATUS Coach — generated session with why-this-workout",
+          label: "Session",
         },
       ],
     },
@@ -109,34 +154,84 @@ export const projects: Project[] = [
       tone: "light",
       shots: [
         {
-          src: "/work/coazon/today.jpg",
+          src: "/work/coazon/01-today.jpg",
           alt: "COAZON today — dose checklist and next medication",
           label: "Hoy",
         },
         {
-          src: "/work/coazon/scan-review.jpg",
+          src: "/work/coazon/02-today-vitals.jpg",
+          alt: "COAZON today — pending measurements, summary, and alarm data",
+          label: "Hoy · vitales",
+        },
+        {
+          src: "/work/coazon/03-scan.jpg",
+          alt: "COAZON prescription scan — reading the receta",
+          label: "Escaneo",
+        },
+        {
+          src: "/work/coazon/04-scan-review.jpg",
           alt: "COAZON prescription scan — review and confirm extracted medicines",
           label: "Receta",
         },
         {
-          src: "/work/coazon/medicines.jpg",
+          src: "/work/coazon/05-medicines.jpg",
           alt: "COAZON medicines list with scan-prescription action",
           label: "Medicinas",
         },
         {
-          src: "/work/coazon/metrics.jpg",
-          alt: "COAZON metrics — blood-pressure trend with in-range band",
+          src: "/work/coazon/06-edit-med.jpg",
+          alt: "COAZON edit medication — name, dose, and schedule",
+          label: "Editar",
+        },
+        {
+          src: "/work/coazon/07-edit-stock.jpg",
+          alt: "COAZON edit medication — stock, notes, and dose changes",
+          label: "Stock",
+        },
+        {
+          src: "/work/coazon/08-edit-save.jpg",
+          alt: "COAZON edit medication — save, archive, or delete",
+          label: "Guardar",
+        },
+        {
+          src: "/work/coazon/09-metrics-hub.jpg",
+          alt: "COAZON metrics hub — blood pressure, heart rate, weight, glucose",
           label: "Métricas",
         },
         {
-          src: "/work/coazon/ai-report.jpg",
+          src: "/work/coazon/10-metrics.jpg",
+          alt: "COAZON metrics — blood-pressure trend with in-range band",
+          label: "Tendencias",
+        },
+        {
+          src: "/work/coazon/11-historial.jpg",
+          alt: "COAZON blood-pressure history with in-range and out-of-range flags",
+          label: "Historial",
+        },
+        {
+          src: "/work/coazon/12-ai-report.jpg",
           alt: "COAZON report — bounded AI summary for the next appointment",
           label: "Resumen IA",
         },
         {
-          src: "/work/coazon/report.jpg",
+          src: "/work/coazon/13-report.jpg",
           alt: "COAZON report — medications, studies, and export PDF",
           label: "Reporte",
+        },
+        {
+          src: "/work/coazon/14-pdf.jpg",
+          alt: "COAZON doctor PDF — 30-day adherence, vitals diary, and medicines",
+          label: "PDF",
+        },
+        {
+          src: "/work/coazon/15-estudios.jpg",
+          alt: "COAZON studies and appointments",
+          label: "Estudios",
+        },
+        {
+          src: "/work/coazon/16-more.jpg",
+          alt: "COAZON more — profile, alarm data, assistant, and language",
+          label: "Más",
         },
       ],
     },
