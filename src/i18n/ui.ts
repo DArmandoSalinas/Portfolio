@@ -14,6 +14,10 @@ export type Ui = {
   enlarge: (alt: string) => string;
   scrollPrev: string;
   scrollNext: string;
+  screensCount: (n: number) => string;
+  docsCount: (n: number) => string;
+  hideScreens: string;
+  hideDocs: string;
   credentialOnFile: string;
   downloadCv: string;
   cv: string;
@@ -82,6 +86,10 @@ export const ui: Record<Locale, Ui> = {
     enlarge: (alt) => `Enlarge ${alt}`,
     scrollPrev: "Previous screens",
     scrollNext: "More screens",
+    screensCount: (n) => (n === 1 ? "1 screen" : `${n} screens`),
+    docsCount: (n) => (n === 1 ? "1 document" : `${n} documents`),
+    hideScreens: "Hide screens",
+    hideDocs: "Hide documents",
     credentialOnFile: "Credential on file",
     downloadCv: "Download CV",
     cv: "CV",
@@ -185,6 +193,10 @@ export const ui: Record<Locale, Ui> = {
     enlarge: (alt) => `Ampliar ${alt}`,
     scrollPrev: "Pantallas anteriores",
     scrollNext: "Más pantallas",
+    screensCount: (n) => (n === 1 ? "1 pantalla" : `${n} pantallas`),
+    docsCount: (n) => (n === 1 ? "1 documento" : `${n} documentos`),
+    hideScreens: "Ocultar pantallas",
+    hideDocs: "Ocultar documentos",
     credentialOnFile: "Credencial en archivo",
     downloadCv: "Descargar CV",
     cv: "CV",

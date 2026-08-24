@@ -23,8 +23,8 @@ export function SpotlightProject({
   return (
     <Reveal as="li" index={index} className="min-w-0">
       <article className="entry min-w-0 overflow-hidden p-7 sm:p-9">
-        <div className="grid gap-x-12 gap-y-6 md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]">
-          <div>
+        <div className="grid gap-x-12 gap-y-6 md:grid-cols-[minmax(0,15rem)_minmax(0,1fr)]">
+          <div className="min-w-0">
             <h3 className="h3">{p.title}</h3>
             <p className="mt-2 text-[13.5px] text-muted">
               {p.categories.map((c) => categoryLabel(locale, c)).join(" · ")}
@@ -32,7 +32,7 @@ export function SpotlightProject({
             {live.length > 0 && <p className="flag mt-3">{t.live}</p>}
           </div>
 
-          <div className="max-w-[62ch]">
+          <div className="max-w-[62ch] md:col-start-2 md:row-start-1 md:row-span-2">
           <p className="text-[18px] font-medium leading-snug text-ink text-pretty">{p.hook}</p>
 
           {p.problem && (
@@ -112,8 +112,15 @@ export function SpotlightProject({
             </div>
           )}
           </div>
+          {p.gallery && (
+            <ProjectMedia
+              gallery={p.gallery}
+              locale={locale}
+              previewClassName="md:col-start-1 md:row-start-2"
+              railClassName="md:col-span-2 md:col-start-1 md:row-start-3"
+            />
+          )}
         </div>
-        {p.gallery && <ProjectMedia gallery={p.gallery} locale={locale} />}
       </article>
     </Reveal>
   );
