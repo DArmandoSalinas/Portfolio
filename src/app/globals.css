@@ -350,6 +350,24 @@ a.lang-on {
     background: #111;
   }
 
+  .device-doc {
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    box-shadow:
+      0 0 0 1px rgba(20, 26, 34, 0.1),
+      0 8px 22px rgba(20, 26, 34, 0.1);
+    background: #fff;
+  }
+
+  .device-wide {
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+    box-shadow:
+      0 0 0 1px rgba(20, 26, 34, 0.1),
+      0 8px 22px rgba(20, 26, 34, 0.1);
+    background: #111;
+  }
+
   .strip {
     background: var(--plate-sunk);
     border-radius: var(--r-sm);

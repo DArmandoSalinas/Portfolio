@@ -114,6 +114,7 @@ export const projectsEs: Record<string, ProjectOverlay> = {
       { label: "score de salud" },
     ],
     note: "Primer lugar en Tec Expo Ingenierías, la competencia de proyectos de ingeniería del Tecnológico de Monterrey. Reconocimiento de Rockwell Automation por contribución a un proyecto de integración con su tecnología (Nuevo León, dic 2025).",
+    galleryCaption: "Monitor de salud del motor en vivo — vibración, temperatura y el score 0–100",
   },
   hrv: {
     brief:

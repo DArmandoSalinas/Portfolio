@@ -33,12 +33,18 @@ export type Project = {
   /** Tightened copy used in the spotlight rows, where space is the constraint. */
   brief?: string;
   gallery?: {
-    kind: "phones" | "video";
+    kind: "phones" | "video" | "board";
     tone?: "light" | "dark";
-    shots?: { src: string; alt: string; label?: string }[];
+    shots?: {
+      src: string;
+      alt: string;
+      label?: string;
+      frame?: "phone" | "doc" | "wide";
+    }[];
     src?: string;
     poster?: string;
     caption?: string;
+    youtube?: string;
   };
 };
 
@@ -220,8 +226,9 @@ export const projects: Project[] = [
         },
         {
           src: "/work/coazon/14-pdf.jpg",
-          alt: "COAZON doctor PDF — 30-day adherence, vitals diary, and medicines",
+          alt: "COAZON doctor PDF — 30-day adherence, vitals diary, medicines, and studies",
           label: "PDF",
+          frame: "doc",
         },
         {
           src: "/work/coazon/15-estudios.jpg",
@@ -279,6 +286,17 @@ export const projects: Project[] = [
     ],
     stack: ["FastAPI", "LangChain", "ChromaDB", "GPT-4o", "text-embedding-3-small", "Streamlit", "PyPDF"],
     repo: "https://github.com/DArmandoSalinas/RAG",
+    gallery: {
+      kind: "board",
+      shots: [
+        {
+          src: "/work/rag/assistant.jpg",
+          alt: "Personal Research Assistant — PDF indexed to 149 segments, answer grounded in the thesis",
+          label: "Assistant",
+          frame: "wide",
+        },
+      ],
+    },
     featured: true,
   },
   {
@@ -344,7 +362,27 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "Streamlit", "Signal processing", "Serial / IoT", "Statistical thresholds"],
     repo: "https://github.com/DArmandoSalinas/Motor-performance-prediction",
+    video: "https://www.youtube.com/watch?v=-XtzsPBqdcY",
     note: "First place at Tec Expo Ingenierías, the Tecnológico de Monterrey engineering project competition. Recognized by Rockwell Automation for contribution to an integration project using their technology (Nuevo León, Dec 2025).",
+    gallery: {
+      kind: "board",
+      youtube: "https://www.youtube.com/watch?v=-XtzsPBqdcY",
+      caption: "Live motor health monitor — vibration, temperature, and the 0–100 score",
+      shots: [
+        {
+          src: "/work/motor/poster.jpg",
+          alt: "Expo Ingenierías poster — predictive maintenance of a motor through accelerometer and temperature sensors",
+          label: "Poster",
+          frame: "doc",
+        },
+        {
+          src: "/work/motor/expo-first.jpg",
+          alt: "First place certificate — Tec Expo Ingenierías AD2025, research and improvement proposals",
+          label: "1er lugar",
+          frame: "doc",
+        },
+      ],
+    },
     featured: true,
   },
   {
@@ -488,7 +526,7 @@ export const projects: Project[] = [
  * production ML service, an awarded industrial system, and the research thesis.
  * Ordered by what a hiring manager needs first, not by date.
  */
-export const SPOTLIGHT_IDS = ["armatus", "coazon", "rul", "motor", "hrv"] as const;
+export const SPOTLIGHT_IDS = ["armatus", "coazon", "rul", "motor", "rag", "hrv"] as const;
 
 const byId = new Map(projects.map((p) => [p.id, p]));
 
