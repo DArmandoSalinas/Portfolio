@@ -63,6 +63,12 @@ export const ArrowRight = ({ className = "" }: P) => (
   </svg>
 );
 
+export const ArrowLeft = ({ className = "" }: P) => (
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden className={`${base} ${className}`}>
+    <path d="M20 12H5m0 0 5.5-5.5M5 12l5.5 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 export const ChevronDown = ({ className = "" }: P) => (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden className={`${base} ${className}`}>
     <path d="m6 9.5 6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

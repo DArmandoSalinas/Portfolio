@@ -12,6 +12,8 @@ export type Ui = {
   close: string;
   certificate: string;
   enlarge: (alt: string) => string;
+  scrollPrev: string;
+  scrollNext: string;
   credentialOnFile: string;
   downloadCv: string;
   cv: string;
@@ -78,6 +80,8 @@ export const ui: Record<Locale, Ui> = {
     close: "Close",
     certificate: "Certificate",
     enlarge: (alt) => `Enlarge ${alt}`,
+    scrollPrev: "Previous screens",
+    scrollNext: "More screens",
     credentialOnFile: "Credential on file",
     downloadCv: "Download CV",
     cv: "CV",
@@ -179,6 +183,8 @@ export const ui: Record<Locale, Ui> = {
     close: "Cerrar",
     certificate: "Certificado",
     enlarge: (alt) => `Ampliar ${alt}`,
+    scrollPrev: "Pantallas anteriores",
+    scrollNext: "Más pantallas",
     credentialOnFile: "Credencial en archivo",
     downloadCv: "Descargar CV",
     cv: "CV",

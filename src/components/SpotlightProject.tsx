@@ -20,8 +20,8 @@ export function SpotlightProject({
   const metrics = p.metrics?.slice(0, 4) ?? [];
 
   return (
-    <Reveal as="li" index={index}>
-      <article className="entry overflow-hidden p-7 sm:p-9">
+    <Reveal as="li" index={index} className="min-w-0">
+      <article className="entry min-w-0 overflow-hidden p-7 sm:p-9">
         <div className="grid gap-x-12 gap-y-6 md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]">
           <div>
             <h3 className="h3">{p.title}</h3>
