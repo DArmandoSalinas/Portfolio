@@ -62,9 +62,9 @@ function shotFrame(shot: GalleryShot, fallback: GalleryShot["frame"]) {
   return shot.frame ?? fallback ?? "phone";
 }
 
-function shotWidth(frame: NonNullable<GalleryShot["frame"]>) {
+function shotWidth(frame: NonNullable<GalleryShot["frame"]>, lone = false) {
   if (frame === "wide") return "w-[14rem] sm:w-[17rem]";
-  if (frame === "doc") return "w-[8.4rem] sm:w-[9.6rem]";
+  if (frame === "doc") return lone ? "w-[11rem] sm:w-[13rem]" : "w-[8.4rem] sm:w-[9.6rem]";
   return "w-[7.4rem] sm:w-[8.4rem]";
 }
 
@@ -150,25 +150,46 @@ export function ProjectMedia({
             <ul className="flex min-w-min snap-x snap-mandatory items-end gap-3 px-5 py-5 sm:gap-3.5 sm:px-6 sm:py-6">
               {shots.map((shot) => {
                 const frame = shotFrame(shot, defaultFrame);
+                const tileClass = `${shotBox(frame)} cert-tile block w-full overflow-hidden ${
+                  shot.href ? "cursor-pointer" : "cursor-zoom-in"
+                }`;
+                const img = (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className={`block h-full w-full ${
+                      frame === "phone" ? "object-cover object-top" : "object-contain"
+                    }`}
+                  />
+                );
                 return (
-                  <li key={shot.src} className={`${shotWidth(frame)} shrink-0 snap-start`}>
-                    <button
-                      type="button"
-                      onClick={() => setShown({ src: shot.src, caption: shot.alt })}
-                      className={`${shotBox(frame)} cert-tile block w-full cursor-zoom-in overflow-hidden`}
-                      aria-label={t.enlarge(shot.alt)}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={shot.src}
-                        alt={shot.alt}
-                        loading="lazy"
-                        decoding="async"
-                        className={`block h-full w-full ${
-                          frame === "phone" ? "object-cover object-top" : "object-contain"
-                        }`}
-                      />
-                    </button>
+                  <li
+                    key={shot.src}
+                    className={`${shotWidth(frame, shots.length === 1 && frame === "doc")} shrink-0 snap-start`}
+                  >
+                    {shot.href ? (
+                      <a
+                        href={shot.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={tileClass}
+                        aria-label={shot.label ? `${shot.label}: ${shot.alt}` : shot.alt}
+                      >
+                        {img}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setShown({ src: shot.src, caption: shot.alt })}
+                        className={tileClass}
+                        aria-label={t.enlarge(shot.alt)}
+                      >
+                        {img}
+                      </button>
+                    )}
                     {shot.label && (
                       <p
                         className={`mt-2 text-center text-[11px] tracking-[0.04em] ${

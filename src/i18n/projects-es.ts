@@ -1,11 +1,12 @@
 import type { Project } from "@/data/projects";
 
 export type ProjectOverlay = Partial<
-  Pick<Project, "hook" | "problem" | "body" | "brief" | "note" | "live" | "repos">
+  Pick<Project, "hook" | "problem" | "body" | "brief" | "note" | "live" | "repos" | "docs">
 > & {
   metrics?: { label: string }[];
   galleryCaption?: string;
   galleryChapters?: { title?: string; caption?: string }[];
+  galleryShots?: { label?: string; alt?: string }[];
 };
 
 export const projectsEs: Record<string, ProjectOverlay> = {
@@ -170,6 +171,18 @@ export const projectsEs: Record<string, ProjectOverlay> = {
       { label: "participantes" },
     ],
     note: "Tesis de MSc in Artificial Intelligence, University of Essex — Random Forest, validado LOPO. Awarded Distinction.",
+    docs: [
+      {
+        label: "Tesis",
+        url: "/work/hrv/HRV-Emotion-Recognition-thesis.pdf",
+      },
+    ],
+    galleryShots: [
+      {
+        label: "Tesis",
+        alt: "Portada de la tesis de MSc: Analysis of Heart Rate Variability using PPG signals to detect and predict emotions through Machine Learning",
+      },
+    ],
   },
   wellhave: {
     hook: "Pulso diario de entrada; un nivel de riesgo y un plan de recuperación de salida.",

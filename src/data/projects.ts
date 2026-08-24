@@ -19,6 +19,8 @@ export type GalleryShot = {
   alt: string;
   label?: string;
   frame?: "phone" | "doc" | "wide";
+  /** Opens this URL instead of the lightbox — used for thesis PDFs. */
+  href?: string;
 };
 
 export type GalleryChapter = {
@@ -51,6 +53,7 @@ export type Project = {
   repo?: string;
   repos?: { label: string; url: string }[];
   live?: { label: string; url: string }[];
+  docs?: { label: string; url: string }[];
   video?: string;
   note?: string;
   featured: boolean;
@@ -462,6 +465,24 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "NeuroKit2", "SciPy", "scikit-learn", "Signal processing"],
     repo: "https://github.com/DArmandoSalinas/HR_DiegoSalinas",
+    docs: [
+      {
+        label: "Thesis",
+        url: "/work/hrv/HRV-Emotion-Recognition-thesis.pdf",
+      },
+    ],
+    gallery: {
+      kind: "board",
+      shots: [
+        {
+          src: "/work/hrv/cover.jpg",
+          alt: "Cover of the MSc thesis: Analysis of Heart Rate Variability using PPG signals to detect and predict emotions through Machine Learning",
+          label: "Thesis",
+          frame: "doc",
+          href: "/work/hrv/HRV-Emotion-Recognition-thesis.pdf",
+        },
+      ],
+    },
     note: "MSc Artificial Intelligence thesis, University of Essex — Random Forest, LOPO validated. Awarded Distinction.",
     featured: true,
   },

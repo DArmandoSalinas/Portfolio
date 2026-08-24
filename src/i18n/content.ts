@@ -23,6 +23,7 @@ function localizeProject(project: Project, locale: Locale): Project {
     note: overlay.note ?? project.note,
     live: overlay.live ?? project.live,
     repos: overlay.repos ?? project.repos,
+    docs: overlay.docs ?? project.docs,
     metrics: project.metrics?.map((metric, i) => ({
       value: metric.value,
       label: overlay.metrics?.[i]?.label ?? metric.label,
@@ -35,6 +36,11 @@ function localizeProject(project: Project, locale: Locale): Project {
             ...chapter,
             title: overlay.galleryChapters?.[i]?.title ?? chapter.title,
             caption: overlay.galleryChapters?.[i]?.caption ?? chapter.caption,
+          })),
+          shots: project.gallery.shots?.map((shot, i) => ({
+            ...shot,
+            label: overlay.galleryShots?.[i]?.label ?? shot.label,
+            alt: overlay.galleryShots?.[i]?.alt ?? shot.alt,
           })),
         }
       : project.gallery,

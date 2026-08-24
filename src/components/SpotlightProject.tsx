@@ -1,6 +1,6 @@
 import { Reveal } from "./Reveal";
 import { ProjectMedia } from "./ProjectMedia";
-import { ArrowUpRight, GitHubIcon, PlayIcon } from "./Icons";
+import { ArrowUpRight, DownloadIcon, GitHubIcon, PlayIcon } from "./Icons";
 import type { Project } from "@/data/projects";
 import { categoryLabel, getUi } from "@/i18n/ui";
 import type { Locale } from "@/i18n/config";
@@ -17,6 +17,7 @@ export function SpotlightProject({
   const t = getUi(locale);
   const repos = p.repos ?? (p.repo ? [{ label: t.repository, url: p.repo }] : []);
   const live = p.live ?? [];
+  const docs = p.docs ?? [];
   const metrics = p.metrics?.slice(0, 4) ?? [];
 
   return (
@@ -59,7 +60,7 @@ export function SpotlightProject({
             <p className="mt-3 text-[13.5px] leading-snug text-muted">{p.note}</p>
           )}
 
-          {(live.length > 0 || repos.length > 0 || p.video) && (
+          {(live.length > 0 || repos.length > 0 || docs.length > 0 || p.video) && (
             <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
               {live.map((l) => (
                 <a
@@ -83,6 +84,18 @@ export function SpotlightProject({
                 >
                   <GitHubIcon className="text-[15px]" />
                   {r.label}
+                </a>
+              ))}
+              {docs.map((d) => (
+                <a
+                  key={d.url}
+                  href={d.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[15px] text-muted hover:text-ink"
+                >
+                  <DownloadIcon className="text-[15px]" />
+                  {d.label}
                 </a>
               ))}
               {p.video && (

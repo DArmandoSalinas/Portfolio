@@ -1,4 +1,4 @@
-import { ArrowUpRight, GitHubIcon, PlayIcon } from "./Icons";
+import { ArrowUpRight, DownloadIcon, GitHubIcon, PlayIcon } from "./Icons";
 import type { Project } from "@/data/projects";
 import type { Locale } from "@/i18n/config";
 import { categoryLabel, getUi } from "@/i18n/ui";
@@ -15,6 +15,7 @@ export function ProjectCard({
   const links = [
     ...(p.live ?? []).map((l) => ({ ...l, kind: "live" as const })),
     ...repos.map((r) => ({ ...r, kind: "repo" as const })),
+    ...(p.docs ?? []).map((d) => ({ ...d, kind: "doc" as const })),
     ...(p.video ? [{ label: t.walkthrough, url: p.video, kind: "video" as const }] : []),
   ];
 
@@ -68,6 +69,7 @@ export function ProjectCard({
               }`}
             >
               {l.kind === "repo" && <GitHubIcon className="text-[15px]" />}
+              {l.kind === "doc" && <DownloadIcon className="text-[15px]" />}
               {l.kind === "video" && <PlayIcon className="text-[15px]" />}
               {l.label}
               {l.kind === "live" && <ArrowUpRight className="text-[14px]" />}
