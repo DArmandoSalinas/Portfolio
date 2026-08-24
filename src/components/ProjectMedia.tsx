@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { Lightbox } from "./Lightbox";
-import type { Project } from "@/data/projects";
+import type { GalleryChapter, GalleryShot, Project } from "@/data/projects";
 import { getUi } from "@/i18n/ui";
 import type { Locale } from "@/i18n/config";
 
 type Gallery = NonNullable<Project["gallery"]>;
-type Shot = NonNullable<Gallery["shots"]>[number];
 
 function youtubeId(url: string) {
   const match = url.match(/(?:youtu\.be\/|v=)([\w-]{11})/);
@@ -58,17 +57,17 @@ function Player({
   );
 }
 
-function shotFrame(shot: Shot, fallback: Shot["frame"]) {
+function shotFrame(shot: GalleryShot, fallback: GalleryShot["frame"]) {
   return shot.frame ?? fallback ?? "phone";
 }
 
-function shotWidth(frame: NonNullable<Shot["frame"]>, boardGrid: boolean) {
+function shotWidth(frame: NonNullable<GalleryShot["frame"]>) {
   if (frame === "wide") return "w-[16rem] sm:w-[20rem]";
-  if (frame === "doc") return boardGrid ? "w-full max-w-[16rem]" : "w-[12rem] sm:w-[14rem]";
-  return "w-[8.4rem] sm:w-[9.6rem]";
+  if (frame === "doc") return "w-[10.5rem] sm:w-[12.5rem]";
+  return "w-[9.2rem] sm:w-[10.8rem]";
 }
 
-function shotBox(frame: NonNullable<Shot["frame"]>) {
+function shotBox(frame: NonNullable<GalleryShot["frame"]>) {
   if (frame === "wide") return "device-wide";
   if (frame === "doc") return "device-doc";
   return "device-phone";
@@ -83,16 +82,19 @@ export function ProjectMedia({
 }) {
   const t = getUi(locale);
   const [shown, setShown] = useState<{ src: string; caption: string } | null>(null);
-  const shots = gallery.shots ?? [];
   const dark = gallery.tone === "dark";
   const defaultFrame = gallery.kind === "board" ? "doc" : "phone";
-  const phones = shots.filter((s) => shotFrame(s, defaultFrame) === "phone");
-  const boards = shots.filter((s) => shotFrame(s, defaultFrame) !== "phone");
+  const chapters: GalleryChapter[] =
+    gallery.chapters && gallery.chapters.length > 0
+      ? gallery.chapters
+      : gallery.shots?.length
+        ? [{ title: "", shots: gallery.shots }]
+        : [];
 
-  const renderShot = (shot: Shot, toneDark: boolean, widthClass: string) => {
+  const renderShot = (shot: GalleryShot) => {
     const frame = shotFrame(shot, defaultFrame);
     return (
-      <li key={shot.src} className={widthClass}>
+      <li key={shot.src} className={`${shotWidth(frame)} shrink-0`}>
         <button
           type="button"
           onClick={() => setShown({ src: shot.src, caption: shot.alt })}
@@ -113,7 +115,7 @@ export function ProjectMedia({
         {shot.label && (
           <p
             className={`mt-2.5 text-center text-[11px] tracking-[0.04em] ${
-              toneDark ? "text-white/55" : "text-muted"
+              dark ? "text-white/55" : "text-muted"
             }`}
           >
             {shot.label}
@@ -123,33 +125,7 @@ export function ProjectMedia({
     );
   };
 
-  const renderShelf = (items: Shot[], toneDark: boolean) => (
-    <div
-      className={`overflow-x-auto no-scrollbar rounded-[var(--r-md)] ${
-        toneDark ? "bg-[#14161a]" : "bg-sunk"
-      }`}
-    >
-      <ul className="flex min-w-min snap-x snap-mandatory items-end gap-3.5 px-5 py-6 sm:gap-4 sm:px-7 sm:py-8">
-        {items.map((shot) =>
-          renderShot(
-            shot,
-            toneDark,
-            `${shotWidth(shotFrame(shot, defaultFrame), false)} shrink-0 snap-start`,
-          ),
-        )}
-      </ul>
-    </div>
-  );
-
-  const renderBoards = (items: Shot[]) => (
-    <div className="rounded-[var(--r-md)] bg-sunk px-5 py-6 sm:px-7 sm:py-8">
-      <ul className="flex flex-wrap items-end gap-5">
-        {items.map((shot) =>
-          renderShot(shot, false, `${shotWidth(shotFrame(shot, defaultFrame), true)} shrink-0`),
-        )}
-      </ul>
-    </div>
-  );
+  const shelfTone = dark ? "bg-[#14161a]" : "bg-sunk";
 
   return (
     <>
@@ -162,12 +138,42 @@ export function ProjectMedia({
         />
       )}
 
-      {phones.length > 0 && <div className="mt-8">{renderShelf(phones, dark)}</div>}
-      {boards.length > 0 && (
-        <div className={phones.length || gallery.youtube || gallery.src ? "mt-4" : "mt-8"}>
-          {renderBoards(boards)}
-        </div>
-      )}
+      {chapters.map((chapter, i) => {
+        const phones = chapter.shots.filter((s) => shotFrame(s, defaultFrame) === "phone");
+        const boards = chapter.shots.filter((s) => shotFrame(s, defaultFrame) !== "phone");
+        return (
+          <div key={`${chapter.title}-${i}`} className={i === 0 ? "mt-8" : "mt-6"}>
+            {(chapter.title || chapter.caption) && (
+              <div className="mb-3 max-w-[62ch]">
+                {chapter.title && (
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
+                    {chapter.title}
+                  </p>
+                )}
+                {chapter.caption && (
+                  <p className="mt-1 text-[14.5px] leading-snug text-body">{chapter.caption}</p>
+                )}
+              </div>
+            )}
+            {phones.length > 0 && (
+              <div className={`rounded-[var(--r-md)] ${shelfTone}`}>
+                <ul className="flex flex-wrap items-end gap-3.5 px-5 py-6 sm:gap-4 sm:px-7 sm:py-7">
+                  {phones.map(renderShot)}
+                </ul>
+              </div>
+            )}
+            {boards.length > 0 && (
+              <div
+                className={`rounded-[var(--r-md)] ${shelfTone} ${phones.length ? "mt-3" : ""}`}
+              >
+                <ul className="flex flex-wrap items-end gap-5 px-5 py-6 sm:px-7 sm:py-7">
+                  {boards.map(renderShot)}
+                </ul>
+              </div>
+            )}
+          </div>
+        );
+      })}
 
       <Lightbox
         open={Boolean(shown)}

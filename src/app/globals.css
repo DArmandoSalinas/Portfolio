@@ -343,10 +343,10 @@ a.lang-on {
 
   .device-phone {
     aspect-ratio: 9 / 19.4;
-    border-radius: 22px;
+    border-radius: 26px;
     box-shadow:
-      0 0 0 1px rgba(20, 26, 34, 0.12),
-      0 10px 28px rgba(20, 26, 34, 0.16);
+      0 0 0 1px rgba(20, 26, 34, 0.14),
+      0 16px 36px rgba(20, 26, 34, 0.18);
     background: #111;
   }
 

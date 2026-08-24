@@ -5,6 +5,7 @@ export type ProjectOverlay = Partial<
 > & {
   metrics?: { label: string }[];
   galleryCaption?: string;
+  galleryChapters?: { title?: string; caption?: string }[];
 };
 
 export const projectsEs: Record<string, ProjectOverlay> = {
@@ -24,6 +25,20 @@ export const projectsEs: Record<string, ProjectOverlay> = {
       { label: "armatus.app", url: "https://www.armatus.app/" },
       { label: "Coach web", url: "https://armatus-web-coach.vercel.app" },
     ],
+    galleryChapters: [
+      {
+        title: "Coach",
+        caption: "Primero el techo. Después la dosis — y un tracker que registra contra un estándar de técnica.",
+      },
+      {
+        title: "Plan",
+        caption: "La semana tiene mapa y razón. La sobrecarga se ve — no se improvisa.",
+      },
+      {
+        title: "Evidencia",
+        caption: "PRs, volumen y el modelo del atleta del que se regenera la semana siguiente.",
+      },
+    ],
   },
   coazon: {
     brief:
@@ -38,6 +53,32 @@ export const projectsEs: Record<string, ProjectOverlay> = {
       { label: "bilingüe" },
     ],
     note: "En desarrollo — etapa de pulido para App Store. Una herramienta de registro y recordatorios, no un dispositivo médico: nunca diagnostica, receta ni recomienda. Repositorio privado.",
+    galleryChapters: [
+      {
+        title: "Hoy",
+        caption: "El día como lo vive la casa — tomas con nombre, vitales pendientes, la siguiente tableta a las 08:00.",
+      },
+      {
+        title: "La receta",
+        caption: "El papel entra. Sale una lista viva — el OCR está acotado: lee, nunca receta.",
+      },
+      {
+        title: "El medicamento",
+        caption: "Un horario real: nombre y dosis, stock y notas, y luego guardar — o archivar.",
+      },
+      {
+        title: "Métricas",
+        caption: "Un diario de signos vitales marcado por zona clínica — no una gráfica bonita. Presión, tendencias, historial.",
+      },
+      {
+        title: "Reporte",
+        caption: "Lo que llevas al cardiólogo: adherencia a 30 días, un resumen acotado, un PDF listo para la consulta.",
+      },
+      {
+        title: "Citas",
+        caption: "Estudios, citas y un asistente que no diagnostica. El hogar cabe en un solo lugar.",
+      },
+    ],
   },
   rul: {
     brief:

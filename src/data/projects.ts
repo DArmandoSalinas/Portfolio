@@ -14,6 +14,30 @@ export type Category = Exclude<Filter, "All">;
 
 export type Metric = { value: string; label: string };
 
+export type GalleryShot = {
+  src: string;
+  alt: string;
+  label?: string;
+  frame?: "phone" | "doc" | "wide";
+};
+
+export type GalleryChapter = {
+  title: string;
+  caption?: string;
+  shots: GalleryShot[];
+};
+
+export type ProjectGallery = {
+  kind: "phones" | "video" | "board";
+  tone?: "light" | "dark";
+  chapters?: GalleryChapter[];
+  shots?: GalleryShot[];
+  src?: string;
+  poster?: string;
+  caption?: string;
+  youtube?: string;
+};
+
 export type Project = {
   id: string;
   title: string;
@@ -32,20 +56,7 @@ export type Project = {
   featured: boolean;
   /** Tightened copy used in the spotlight rows, where space is the constraint. */
   brief?: string;
-  gallery?: {
-    kind: "phones" | "video" | "board";
-    tone?: "light" | "dark";
-    shots?: {
-      src: string;
-      alt: string;
-      label?: string;
-      frame?: "phone" | "doc" | "wide";
-    }[];
-    src?: string;
-    poster?: string;
-    caption?: string;
-    youtube?: string;
-  };
+  gallery?: ProjectGallery;
 };
 
 export const projects: Project[] = [
@@ -72,56 +83,64 @@ export const projects: Project[] = [
     gallery: {
       kind: "phones",
       tone: "dark",
-      shots: [
+      chapters: [
         {
-          src: "/work/armatus/01.jpg",
-          alt: "ARMATUS Coach — daily readiness check before the session",
-          label: "Coach",
+          title: "Coach",
+          caption: "Readiness first. Then the dose — and a tracker that logs against a technique standard.",
+          shots: [
+            {
+              src: "/work/armatus/01-coach.jpg",
+              alt: "ARMATUS Coach — energy, sleep, and time before the session is built",
+              label: "Today",
+            },
+            {
+              src: "/work/armatus/02-session.jpg",
+              alt: "ARMATUS Coach — generated session with why-this-workout",
+              label: "Session",
+            },
+            {
+              src: "/work/armatus/03-tracker.jpg",
+              alt: "ARMATUS tracker — sets, alternatives, rest, and a technique sketch",
+              label: "Tracker",
+            },
+          ],
         },
         {
-          src: "/work/armatus/02.jpg",
-          alt: "ARMATUS weekly plan — training and sport mapped by day",
-          label: "My Plan",
+          title: "Plan",
+          caption: "The week has a map and a reason. Overload is visible — not improvised.",
+          shots: [
+            {
+              src: "/work/armatus/04-plan.jpg",
+              alt: "ARMATUS weekly plan — training and sport mapped by day",
+              label: "Week",
+            },
+            {
+              src: "/work/armatus/05-rationale.jpg",
+              alt: "ARMATUS weekly plan rationale — why this week is built this way",
+              label: "Rationale",
+            },
+            {
+              src: "/work/armatus/06-overload.jpg",
+              alt: "ARMATUS progressive-overload roadmap — adaptation, strength, peak and deload",
+              label: "Overload",
+            },
+          ],
         },
         {
-          src: "/work/armatus/03.jpg",
-          alt: "ARMATUS weekly plan rationale — why this week is built this way",
-          label: "Rationale",
-        },
-        {
-          src: "/work/armatus/04.jpg",
-          alt: "ARMATUS Journey — this week's sessions, volume, and streak",
-          label: "Journey",
-        },
-        {
-          src: "/work/armatus/05.jpg",
-          alt: "ARMATUS Journey — top exercises and maxes over 90 days",
-          label: "PRs",
-        },
-        {
-          src: "/work/armatus/06.jpg",
-          alt: "ARMATUS Journey — strength trend and recent sessions",
-          label: "Strength",
-        },
-        {
-          src: "/work/armatus/07.jpg",
-          alt: "ARMATUS athlete profile — complete athlete model",
-          label: "Profile",
-        },
-        {
-          src: "/work/armatus/08.jpg",
-          alt: "ARMATUS Coach — generate today's workout from readiness and time",
-          label: "Generate",
-        },
-        {
-          src: "/work/armatus/09.jpg",
-          alt: "ARMATUS Coach — conversational session brief",
-          label: "Chat",
-        },
-        {
-          src: "/work/armatus/10.jpg",
-          alt: "ARMATUS Coach — generated session with why-this-workout",
-          label: "Session",
+          title: "Evidence",
+          caption: "PRs, volume, and the athlete model the next week is regenerated from.",
+          shots: [
+            {
+              src: "/work/armatus/07-journey.jpg",
+              alt: "ARMATUS Journey — this week's sessions, volume, and streak",
+              label: "Journey",
+            },
+            {
+              src: "/work/armatus/08-profile.jpg",
+              alt: "ARMATUS athlete profile — goals, equipment, injuries, schedule",
+              label: "Profile",
+            },
+          ],
         },
       ],
     },
@@ -158,92 +177,128 @@ export const projects: Project[] = [
     gallery: {
       kind: "phones",
       tone: "light",
-      shots: [
+      chapters: [
         {
-          src: "/work/coazon/01-today.jpg",
-          alt: "COAZON today — dose checklist and next medication",
-          label: "Hoy",
+          title: "Hoy",
+          caption: "The day as the household lives it — doses named, vitals pending, the next tablet at 08:00.",
+          shots: [
+            {
+              src: "/work/coazon/01-today.jpg",
+              alt: "COAZON today — dose checklist and the next medication",
+              label: "Hoy",
+            },
+            {
+              src: "/work/coazon/02-vitales.jpg",
+              alt: "COAZON today — pending measurements, summary, and alarm data",
+              label: "Vitales",
+            },
+          ],
         },
         {
-          src: "/work/coazon/02-today-vitals.jpg",
-          alt: "COAZON today — pending measurements, summary, and alarm data",
-          label: "Hoy · vitales",
+          title: "La receta",
+          caption: "Paper in. A living list out — the OCR is bounded: it reads, it never prescribes.",
+          shots: [
+            {
+              src: "/work/coazon/03-escaneo.jpg",
+              alt: "COAZON prescription scan — reading the receta",
+              label: "Escaneo",
+            },
+            {
+              src: "/work/coazon/04-receta.jpg",
+              alt: "COAZON prescription scan — review and confirm extracted medicines",
+              label: "Receta",
+            },
+            {
+              src: "/work/coazon/05-medicinas.jpg",
+              alt: "COAZON medicines list with scan-prescription action",
+              label: "Medicinas",
+            },
+          ],
         },
         {
-          src: "/work/coazon/03-scan.jpg",
-          alt: "COAZON prescription scan — reading the receta",
-          label: "Escaneo",
+          title: "El medicamento",
+          caption: "A real schedule: name and dose, stock and notes, then save — or archive.",
+          shots: [
+            {
+              src: "/work/coazon/06-editar.jpg",
+              alt: "COAZON edit medication — name, dose, and schedule",
+              label: "Editar",
+            },
+            {
+              src: "/work/coazon/07-stock.jpg",
+              alt: "COAZON edit medication — duration, quantity, and dose changes",
+              label: "Stock",
+            },
+            {
+              src: "/work/coazon/08-guardar.jpg",
+              alt: "COAZON edit medication — save, archive, or delete",
+              label: "Guardar",
+            },
+          ],
         },
         {
-          src: "/work/coazon/04-scan-review.jpg",
-          alt: "COAZON prescription scan — review and confirm extracted medicines",
-          label: "Receta",
+          title: "Métricas",
+          caption: "A vitals diary marked by clinical zone — not a pretty chart. Blood pressure, trends, history.",
+          shots: [
+            {
+              src: "/work/coazon/09-metricas.jpg",
+              alt: "COAZON metrics — blood pressure, heart rate, weight, glucose",
+              label: "Métricas",
+            },
+            {
+              src: "/work/coazon/10-tendencias.jpg",
+              alt: "COAZON trends — systolic and diastolic with the in-range band",
+              label: "Tendencias",
+            },
+            {
+              src: "/work/coazon/11-historial.jpg",
+              alt: "COAZON history — readings flagged in-range or out-of-range",
+              label: "Historial",
+            },
+          ],
         },
         {
-          src: "/work/coazon/05-medicines.jpg",
-          alt: "COAZON medicines list with scan-prescription action",
-          label: "Medicinas",
+          title: "Reporte",
+          caption: "What you take to the cardiologist: 30-day adherence, a bounded summary, a doctor-ready PDF.",
+          shots: [
+            {
+              src: "/work/coazon/13-reporte.jpg",
+              alt: "COAZON report — 30-day adherence and patient data",
+              label: "Reporte",
+            },
+            {
+              src: "/work/coazon/14-resumen.jpg",
+              alt: "COAZON report — bounded AI summary for the next appointment",
+              label: "Resumen IA",
+            },
+            {
+              src: "/work/coazon/15-pdf.jpg",
+              alt: "COAZON doctor PDF — adherence, vitals diary, medicines, and studies",
+              label: "PDF",
+              frame: "doc",
+            },
+          ],
         },
         {
-          src: "/work/coazon/06-edit-med.jpg",
-          alt: "COAZON edit medication — name, dose, and schedule",
-          label: "Editar",
-        },
-        {
-          src: "/work/coazon/07-edit-stock.jpg",
-          alt: "COAZON edit medication — stock, notes, and dose changes",
-          label: "Stock",
-        },
-        {
-          src: "/work/coazon/08-edit-save.jpg",
-          alt: "COAZON edit medication — save, archive, or delete",
-          label: "Guardar",
-        },
-        {
-          src: "/work/coazon/09-metrics-hub.jpg",
-          alt: "COAZON metrics hub — blood pressure, heart rate, weight, glucose",
-          label: "Métricas",
-        },
-        {
-          src: "/work/coazon/10-metrics.jpg",
-          alt: "COAZON metrics — blood-pressure trend with in-range band",
-          label: "Tendencias",
-        },
-        {
-          src: "/work/coazon/11-historial.jpg",
-          alt: "COAZON blood-pressure history with in-range and out-of-range flags",
-          label: "Historial",
-        },
-        {
-          src: "/work/coazon/12-assistant.jpg",
-          alt: "COAZON assistant — bounded answers about the care plan, never a diagnosis",
-          label: "Asistente",
-        },
-        {
-          src: "/work/coazon/13-report.jpg",
-          alt: "COAZON report — 30-day adherence and patient data for the next visit",
-          label: "Reporte",
-        },
-        {
-          src: "/work/coazon/13b-ai-report.jpg",
-          alt: "COAZON report — bounded AI summary for the next appointment",
-          label: "Resumen IA",
-        },
-        {
-          src: "/work/coazon/14-pdf.jpg",
-          alt: "COAZON doctor PDF — 30-day adherence, vitals diary, medicines, and studies",
-          label: "PDF",
-          frame: "doc",
-        },
-        {
-          src: "/work/coazon/15-estudios.jpg",
-          alt: "COAZON studies and appointments",
-          label: "Estudios",
-        },
-        {
-          src: "/work/coazon/16-more.jpg",
-          alt: "COAZON more — profile, alarm data, assistant, and language",
-          label: "Más",
+          title: "Citas",
+          caption: "Studies, appointments, and an assistant that will not diagnose. The household stays in one place.",
+          shots: [
+            {
+              src: "/work/coazon/16-citas.jpg",
+              alt: "COAZON studies and appointments — requested tests and the next visit",
+              label: "Estudios y citas",
+            },
+            {
+              src: "/work/coazon/12-asistente.jpg",
+              alt: "COAZON assistant — bounded answers about the care plan",
+              label: "Asistente",
+            },
+            {
+              src: "/work/coazon/17-mas.jpg",
+              alt: "COAZON more — profile, alarm data, emergency contacts, language",
+              label: "Más",
+            },
+          ],
         },
       ],
     },

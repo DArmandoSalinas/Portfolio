@@ -27,10 +27,17 @@ function localizeProject(project: Project, locale: Locale): Project {
       value: metric.value,
       label: overlay.metrics?.[i]?.label ?? metric.label,
     })),
-    gallery:
-      overlay.galleryCaption && project.gallery
-        ? { ...project.gallery, caption: overlay.galleryCaption }
-        : project.gallery,
+    gallery: project.gallery
+      ? {
+          ...project.gallery,
+          caption: overlay.galleryCaption ?? project.gallery.caption,
+          chapters: project.gallery.chapters?.map((chapter, i) => ({
+            ...chapter,
+            title: overlay.galleryChapters?.[i]?.title ?? chapter.title,
+            caption: overlay.galleryChapters?.[i]?.caption ?? chapter.caption,
+          })),
+        }
+      : project.gallery,
   };
 }
 
