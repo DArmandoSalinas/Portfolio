@@ -85,14 +85,16 @@ function ShotTile({
   size,
   enlarge,
   onOpen,
+  eager = false,
 }: {
   shot: GalleryShot;
   frame: NonNullable<GalleryShot["frame"]>;
   size: "hero" | "rail";
   enlarge: (alt: string) => string;
   onOpen: (shot: GalleryShot) => void;
+  eager?: boolean;
 }) {
-  const tileClass = `${shotBox(frame)} cert-tile block w-full overflow-hidden ${
+  const tileClass = `${shotBox(frame)} block w-full overflow-hidden ${
     shot.href ? "cursor-pointer" : "cursor-zoom-in"
   }`;
   const img = (
@@ -100,7 +102,7 @@ function ShotTile({
     <img
       src={shot.src}
       alt={shot.alt}
-      loading="lazy"
+      loading={size === "hero" || eager ? "eager" : "lazy"}
       decoding="async"
       className={`block h-full w-full ${
         frame === "phone" ? "object-cover object-top" : "object-contain"
@@ -153,6 +155,7 @@ export function ProjectMedia({
   const railId = useId();
   const [shown, setShown] = useState<{ src: string; caption: string } | null>(null);
   const [open, setOpen] = useState(false);
+  const [railReady, setRailReady] = useState(false);
   const scroller = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
@@ -177,8 +180,10 @@ export function ProjectMedia({
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
     const overflow = max > 12;
-    setCanPrev(overflow && el.scrollLeft > 10);
-    setCanNext(overflow && el.scrollLeft < max - 10);
+    const nextPrev = overflow && el.scrollLeft > 10;
+    const nextNext = overflow && el.scrollLeft < max - 10;
+    setCanPrev((v) => (v === nextPrev ? v : nextPrev));
+    setCanNext((v) => (v === nextNext ? v : nextNext));
   }, []);
 
   useEffect(() => {
@@ -206,7 +211,20 @@ export function ProjectMedia({
     el.scrollBy({ left: dir * Math.round(el.clientWidth * 0.7), behavior: "smooth" });
   };
 
-  const openShot = (shot: GalleryShot) => setShown({ src: shot.src, caption: shot.alt });
+  const openShot = useCallback((shot: GalleryShot) => {
+    setShown({ src: shot.src, caption: shot.alt });
+  }, []);
+
+  const closeShot = useCallback(() => setShown(null), []);
+
+  const toggleRail = () => {
+    if (!open) {
+      setRailReady(true);
+      setOpen(true);
+      return;
+    }
+    setOpen(false);
+  };
 
   const peek = !open && canExpand && heroFrame === "phone" && shots[1];
 
@@ -256,7 +274,7 @@ export function ProjectMedia({
             type="button"
             aria-expanded={open}
             aria-controls={railId}
-            onClick={() => setOpen((v) => !v)}
+            onClick={toggleRail}
             className="mt-3 inline-flex items-center gap-1.5 text-[13.5px] text-muted transition-colors hover:text-ink"
           >
             {open ? hideLabel : countLabel}
@@ -270,12 +288,15 @@ export function ProjectMedia({
           open={Boolean(shown)}
           src={shown?.src}
           caption={shown?.caption}
-          onClose={() => setShown(null)}
+          onClose={closeShot}
         />
       </div>
 
-      {open && canExpand && (
-        <div id={railId} className={`relative min-w-0 ${railClassName}`}>
+      {railReady && canExpand && (
+        <div
+          id={railId}
+          className={`relative min-w-0 ${open ? "" : "hidden"} ${railClassName}`}
+        >
           <div
             ref={scroller}
             className={`no-scrollbar w-full max-w-full overflow-x-auto rounded-[var(--r-md)] ${
@@ -293,6 +314,7 @@ export function ProjectMedia({
                       size="rail"
                       enlarge={t.enlarge}
                       onOpen={openShot}
+                      eager
                     />
                   </li>
                 );

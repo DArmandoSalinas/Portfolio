@@ -131,6 +131,13 @@ body > * {
   z-index: 1;
 }
 
+/* Unlayered so it beats `body > *` and actually sticks to the viewport. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -452,6 +459,13 @@ a.lang-on {
   .cert-tile:hover,
   .cert-tile:focus-visible {
     transform: translateY(-2px);
+  }
+
+  html[data-lightbox="open"] .entry,
+  html[data-lightbox="open"] .cert-tile,
+  html[data-lightbox="open"] .plate-link {
+    transform: none !important;
+    transition: none !important;
   }
 
   .no-scrollbar {

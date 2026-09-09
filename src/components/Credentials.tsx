@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { SectionHead } from "./SectionHead";
 import { Reveal } from "./Reveal";
 import { CertImage } from "./CertImage";
@@ -42,6 +42,7 @@ export function Credentials({
     site: siteCopy,
   } = getContent(locale);
   const [shown, setShown] = useState<Shown | null>(null);
+  const closeShown = useCallback(() => setShown(null), []);
   const have = useMemo(() => new Set(available), [available]);
 
   const headlines = useMemo<Headline[]>(() => {
@@ -253,7 +254,7 @@ export function Credentials({
         open={Boolean(shown)}
         src={shown?.src}
         caption={shown?.caption}
-        onClose={() => setShown(null)}
+        onClose={closeShown}
       />
     </section>
   );
