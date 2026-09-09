@@ -31,7 +31,7 @@ export const projectsEs: Record<string, ProjectOverlay> = {
       },
       {
         label: "Construyendo",
-        alt: "Diego Armando Salinas con la laptop de ReflexIA durante Innoweeks, explicando el demo al equipo",
+        alt: "Diego Armando Salinas, de playera negra, explicando el demo de ReflexIA al equipo durante Innoweeks",
       },
       {
         label: "El triunfo",

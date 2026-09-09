@@ -101,7 +101,7 @@ export const projects: Project[] = [
         },
         {
           src: "/work/innoweeks/working.jpg",
-          alt: "Diego Armando Salinas with the ReflexIA laptop during Innoweeks, talking through the demo with the team",
+          alt: "Diego Armando Salinas, in the black t-shirt, talking the team through the ReflexIA demo during Innoweeks",
           label: "Building",
           frame: "wide",
         },

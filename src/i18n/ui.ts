@@ -14,6 +14,8 @@ export type Ui = {
   enlarge: (alt: string) => string;
   scrollPrev: string;
   scrollNext: string;
+  photoPrev: string;
+  photoNext: string;
   screensCount: (n: number) => string;
   docsCount: (n: number) => string;
   photosCount: (n: number) => string;
@@ -88,6 +90,8 @@ export const ui: Record<Locale, Ui> = {
     enlarge: (alt) => `Enlarge ${alt}`,
     scrollPrev: "Previous screens",
     scrollNext: "More screens",
+    photoPrev: "Previous photo",
+    photoNext: "Next photo",
     screensCount: (n) => (n === 1 ? "1 screen" : `${n} screens`),
     docsCount: (n) => (n === 1 ? "1 document" : `${n} documents`),
     photosCount: (n) => (n === 1 ? "1 photo" : `${n} photos`),
@@ -197,6 +201,8 @@ export const ui: Record<Locale, Ui> = {
     enlarge: (alt) => `Ampliar ${alt}`,
     scrollPrev: "Pantallas anteriores",
     scrollNext: "Más pantallas",
+    photoPrev: "Foto anterior",
+    photoNext: "Foto siguiente",
     screensCount: (n) => (n === 1 ? "1 pantalla" : `${n} pantallas`),
     docsCount: (n) => (n === 1 ? "1 documento" : `${n} documentos`),
     photosCount: (n) => (n === 1 ? "1 foto" : `${n} fotos`),

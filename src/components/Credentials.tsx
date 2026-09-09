@@ -252,8 +252,7 @@ export function Credentials({
 
       <Lightbox
         open={Boolean(shown)}
-        src={shown?.src}
-        caption={shown?.caption}
+        items={shown ? [shown] : []}
         onClose={closeShown}
       />
     </section>

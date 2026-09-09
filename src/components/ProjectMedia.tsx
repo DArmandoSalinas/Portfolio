@@ -153,7 +153,10 @@ export function ProjectMedia({
   const t = getUi(locale);
   const shots = flattenShots(gallery);
   const railId = useId();
-  const [shown, setShown] = useState<{ src: string; caption: string } | null>(null);
+  const slides = shots
+    .filter((shot) => !shot.href)
+    .map((shot) => ({ src: shot.src, caption: shot.alt }));
+  const [slide, setSlide] = useState<number | null>(null);
   const [open, setOpen] = useState(false);
   const [railReady, setRailReady] = useState(false);
   const scroller = useRef<HTMLDivElement>(null);
@@ -211,11 +214,15 @@ export function ProjectMedia({
     el.scrollBy({ left: dir * Math.round(el.clientWidth * 0.7), behavior: "smooth" });
   };
 
-  const openShot = useCallback((shot: GalleryShot) => {
-    setShown({ src: shot.src, caption: shot.alt });
-  }, []);
+  const openShot = useCallback(
+    (shot: GalleryShot) => {
+      const i = slides.findIndex((item) => item.src === shot.src);
+      if (i >= 0) setSlide(i);
+    },
+    [slides],
+  );
 
-  const closeShot = useCallback(() => setShown(null), []);
+  const closeShot = useCallback(() => setSlide(null), []);
 
   const toggleRail = () => {
     if (!open) {
@@ -285,9 +292,10 @@ export function ProjectMedia({
         )}
 
         <Lightbox
-          open={Boolean(shown)}
-          src={shown?.src}
-          caption={shown?.caption}
+          open={slide !== null}
+          items={slides}
+          index={slide ?? 0}
+          onIndex={setSlide}
           onClose={closeShot}
         />
       </div>
