@@ -67,7 +67,6 @@ const projectsEs: CvProject[] = [
   {
     name: "ReflexIA — SAP Innoweeks 2026 (1.er lugar general)",
     stack: cvProjects[0].stack,
-    link: cvProjects[0].link,
     bullets: [
       "Construí el núcleo de IA de un flujo de aprobación nativo de BTP para Tecmilenio en un sprint de cinco semanas contra cinco equipos de Brasil: microservicio Gen AI, herramientas MCP, GraphRAG en HANA Cloud y una UI de voz/chat estilo Joule.",
       "Resultado validado por la universidad: $3.9M ahorrados al año, 3,750 horas devueltas a educadores, financiamiento equivalente a 518 becas al año. También Best Pitch y Best Popular Support.",

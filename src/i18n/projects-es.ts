@@ -23,7 +23,7 @@ export const projectsEs: Record<string, ProjectOverlay> = {
       { label: "validado / año" },
       { label: "becas / año" },
     ],
-    note: "Equipo de 14 en SAP Labs Latin America Monterrey. También Best Pitch y Best Popular Support. Cifras de impacto validadas por Tecmilenio. Repositorio privado.",
+    note: "Equipo de 14 en SAP Labs Latin America Monterrey. También Best Pitch y Best Popular Support. Cifras de impacto validadas por Tecmilenio.",
     galleryShots: [
       {
         label: "El equipo",

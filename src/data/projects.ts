@@ -89,8 +89,7 @@ export const projects: Project[] = [
       "FastAPI",
       "TypeScript",
     ],
-    repo: "https://github.com/DArmandoSalinas/INNOWEEKS-2026",
-    note: "Team of 14 at SAP Labs Latin America Monterrey. Also Best Pitch and Best Popular Support. Impact figures validated by Tecmilenio. Private repository.",
+    note: "Team of 14 at SAP Labs Latin America Monterrey. Also Best Pitch and Best Popular Support. Impact figures validated by Tecmilenio.",
     gallery: {
       kind: "board",
       shots: [

@@ -80,7 +80,6 @@ export const cvProjects: CvProject[] = [
   {
     name: "ReflexIA — SAP Innoweeks 2026 (1st place overall)",
     stack: "SAP BTP, SAP HANA Cloud, GraphRAG, MCP, ElevenLabs, SAPUI5, FastAPI, Redis, TypeScript",
-    link: "github.com/DArmandoSalinas/INNOWEEKS-2026",
     bullets: [
       "Built the AI core of a BTP-native approval workflow for Tecmilenio in a five-week sprint against five Brazilian teams: Gen AI microservice, MCP tools, GraphRAG on HANA Cloud, and a Joule-style voice/chat UI.",
       "University-validated outcome: $3.9M saved annually, 3,750 hours returned to educators, funding equivalent to 518 scholarships a year. Also Best Pitch and Best Popular Support.",
