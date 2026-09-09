@@ -6,6 +6,16 @@ export const certificationsEs: CertGroup[] = [
     blurb: "Resultados de competencia juzgada y reconocimiento de industria.",
     items: [
       {
+        id: "innoweeks",
+        title: "SAP Innoweeks 2026 — 1.er lugar general",
+        issuer: "SAP Labs Latin America",
+        year: "ago 2026",
+        takeaway:
+          "12.ª edición. Primer equipo mexicano en ganar Innoweeks, contra cinco equipos de Brasil en un sprint de cinco semanas. El lab de Monterrey también se llevó Best Pitch y Best Popular Support. El trabajo ganador fue ReflexIA, un flujo de IA nativo de SAP BTP para Tecmilenio — construí parte del núcleo de IA (microservicio Gen AI, herramientas MCP, GraphRAG en HANA Cloud y la UI SAPUI5 estilo Joule).",
+        image: "/certs/innoweeks-awards.jpg",
+        featured: true,
+      },
+      {
         id: "rockwell",
         title: "Rockwell Automation — Reconocimiento de proyecto de integración",
         issuer: "Rockwell Automation · Tec de Monterrey",

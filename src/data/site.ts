@@ -9,7 +9,7 @@ export const site = {
    */
   bio: [
     "I build machine-learning systems end to end: the model, the API, the interface, and the cloud they run on.",
-    "I studied mechatronics at Tecnológico de Monterrey and an MSc in Artificial Intelligence with Distinction at Essex. I work on Generative AI at SAP, and I founded ARMATUS, a training coach on iOS.",
+    "I studied mechatronics at Tecnológico de Monterrey and an MSc in Artificial Intelligence with Distinction at Essex. I work on Generative AI at SAP — 1st place at Innoweeks 2026 — and I founded ARMATUS, a training coach on iOS.",
   ],
   location: "Monterrey, MX",
   workAuth: "Open to US roles and project work — TN visa eligible",
@@ -36,7 +36,7 @@ export const site = {
     { label: "Contact", href: "#contact" },
   ],
   proof: [
-    { label: "SAP", detail: "Generative AI in production", meta: "Current role" },
+    { label: "SAP Innoweeks", detail: "1st place overall · first Mexican team", meta: "2026" },
     { label: "ARMATUS", detail: "Founder · shipped on iOS", meta: "Current" },
     { label: "MSc Artificial Intelligence", detail: "University of Essex", meta: "Distinction" },
     { label: "Monterrey, MX", detail: "Open to roles and project work", meta: "TN visa eligible" },

@@ -10,6 +10,47 @@ export type ProjectOverlay = Partial<
 };
 
 export const projectsEs: Record<string, ProjectOverlay> = {
+  innoweeks: {
+    brief:
+      "Sprint de cinco semanas en SAP Labs Latin America Monterrey contra cinco equipos de Brasil. Un flujo de IA nativo de BTP para Tecmilenio. Fui dueño de parte del núcleo de IA: el microservicio Gen AI, un servidor de herramientas MCP, GraphRAG en HANA Cloud y una UI de voz y chat estilo Joule en SAPUI5.",
+    hook: "1.er lugar general. Primer equipo mexicano en ganar Innoweeks.",
+    problem:
+      "Las aprobaciones de presupuesto de Tecmilenio vivían en un stack de 14 años, en 5+ plataformas desconectadas. Las solicitudes marcadas tardaban más de cinco días hábiles. La universidad cifró el arrastre en $3.9M al año, sostenido por la gente obligada a usarlo todos los días.",
+    body: "SAP Innoweeks 2026, 12.ª edición — un sprint de cinco semanas en SAP Labs Latin America Monterrey contra cinco equipos de Brasil. Catorce personas construyeron ReflexIA, un flujo de IA nativo de SAP BTP que reemplazó esa cadena de aprobación por un solo camino inteligente. Fui responsable de parte del núcleo de IA: el microservicio Gen AI desde cero (speech-to-text, TTS y voz a voz con ElevenLabs), un servidor Model Context Protocol que expone esas herramientas como acciones invocables por el agente, y GraphRAG sobre SAP HANA Cloud para que el modelo consultara políticas organizacionales y cadenas de aprobación en contexto. También construí la UI de voz y chat en SAPUI5 TypeScript, estilo Joule. Tecmilenio validó el impacto: $3.9M ahorrados al año, 3,750 horas devueltas a educadores, suficientes para financiar 518 becas estudiantiles al año. 1.er lugar general, Best Pitch, Best Popular Support — la primera vez que un equipo mexicano gana.",
+    metrics: [
+      { label: "general · Innoweeks 2026" },
+      { label: "equipo mexicano en ganar" },
+      { label: "validado / año" },
+      { label: "becas / año" },
+    ],
+    note: "Equipo de 14 en SAP Labs Latin America Monterrey. También Best Pitch y Best Popular Support. Cifras de impacto validadas por Tecmilenio. Repositorio privado.",
+    galleryShots: [
+      {
+        label: "El equipo",
+        alt: "El equipo de catorce personas de SAP Labs Latin America Monterrey con los trofeos de Innoweeks 2026, frente al backdrop de la 12.ª edición",
+      },
+      {
+        label: "Construyendo",
+        alt: "Diego Armando Salinas con la laptop de ReflexIA durante Innoweeks, explicando el demo al equipo",
+      },
+      {
+        label: "El triunfo",
+        alt: "El equipo celebrando el triunfo de Innoweeks 2026 en SAP Labs Latin America",
+      },
+      {
+        label: "Después",
+        alt: "Abrazo del equipo después de ganar SAP Innoweeks 2026",
+      },
+      {
+        label: "Trofeo",
+        alt: "Trofeo de cristal de SAP Innoweeks con la placa 2026 Universidad Tecmilenio",
+      },
+      {
+        label: "Premios",
+        alt: "Medallas de Winner y las placas Best Pitch y Best Popular Support de SAP Innoweeks 12.ª edición, agosto 2026",
+      },
+    ],
+  },
   armatus: {
     brief:
       "Un protocolo cerrado de cinco pasos: calibrar al atleta, mapear la sobrecarga, revisar readiness antes de la carga, dosificar el día y registrar contra un estándar de técnica. Cada semana nueva se regenera a partir de PRs y fatiga acumulada; correr y ciclismo cuentan como carga real, no como una nota al margen.",

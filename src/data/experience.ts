@@ -20,13 +20,14 @@ export const experience: Role[] = [
     location: "San Pedro Garza García, NL",
     current: true,
     summary:
-      "I design and deploy Generative AI that automates technical fault reporting — sharper incident categorization, faster response.",
+      "I ship Generative AI on SAP BTP at Labs Latin America Monterrey. In 2026 our team of 14 won Innoweeks — 1st place overall, Best Pitch, Best Popular Support — the first Mexican team to take the competition.",
     points: [
-      "I build GenAI services on SAP Business AI and BTP extension patterns.",
-      "I work with leading LLMs through SAP AI Core, AI Launchpad and the generative AI hub.",
-      "SAP Certified — SAP Generative AI Developer.",
+      "On ReflexIA, a five-week sprint for Tecmilenio against five Brazilian teams, I built the Gen AI microservice from scratch: speech-to-text, TTS and voice-to-voice (ElevenLabs), an MCP server of agent-callable tools, and GraphRAG on SAP HANA Cloud so the model could query policies and approval chains in context.",
+      "I built the voice and chat UI in SAPUI5 TypeScript, Joule-style.",
+      "Tecmilenio validated the replacement of a 14-year-old, 5+ platform budget-approval stack: $3.9M saved annually, 3,750 hours returned to educators, enough to fund 518 student scholarships a year.",
+      "Day to day I design and deploy generative AI that automates technical fault reporting on SAP Business AI, AI Core, AI Launchpad and the generative AI hub. SAP Certified — Generative AI Developer.",
     ],
-    tags: ["Generative AI", "SAP BTP", "AI Core", "LLMs"],
+    tags: ["Generative AI", "SAP BTP", "GraphRAG", "MCP", "SAPUI5"],
   },
   {
     num: "02",

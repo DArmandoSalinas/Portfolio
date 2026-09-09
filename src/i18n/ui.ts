@@ -16,8 +16,10 @@ export type Ui = {
   scrollNext: string;
   screensCount: (n: number) => string;
   docsCount: (n: number) => string;
+  photosCount: (n: number) => string;
   hideScreens: string;
   hideDocs: string;
+  hidePhotos: string;
   credentialOnFile: string;
   downloadCv: string;
   cv: string;
@@ -88,8 +90,10 @@ export const ui: Record<Locale, Ui> = {
     scrollNext: "More screens",
     screensCount: (n) => (n === 1 ? "1 screen" : `${n} screens`),
     docsCount: (n) => (n === 1 ? "1 document" : `${n} documents`),
+    photosCount: (n) => (n === 1 ? "1 photo" : `${n} photos`),
     hideScreens: "Hide screens",
     hideDocs: "Hide documents",
+    hidePhotos: "Hide photos",
     credentialOnFile: "Credential on file",
     downloadCv: "Download CV",
     cv: "CV",
@@ -195,8 +199,10 @@ export const ui: Record<Locale, Ui> = {
     scrollNext: "Más pantallas",
     screensCount: (n) => (n === 1 ? "1 pantalla" : `${n} pantallas`),
     docsCount: (n) => (n === 1 ? "1 documento" : `${n} documentos`),
+    photosCount: (n) => (n === 1 ? "1 foto" : `${n} fotos`),
     hideScreens: "Ocultar pantallas",
     hideDocs: "Ocultar documentos",
+    hidePhotos: "Ocultar fotos",
     credentialOnFile: "Credencial en archivo",
     downloadCv: "Descargar CV",
     cv: "CV",

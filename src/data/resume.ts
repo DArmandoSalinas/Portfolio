@@ -11,7 +11,7 @@
  */
 
 export const cvSummary =
-  "AI & Machine Learning Engineer, MSc Artificial Intelligence (Distinction). Ships complete systems — data pipeline, model, API, interface, cloud — not notebooks. Builds generative AI at SAP to automate technical fault reporting and founded ARMATUS, a production iOS training coach. Mechatronics background in signal processing, predictive analytics and real-time monitoring.";
+  "AI & Machine Learning Engineer, MSc Artificial Intelligence (Distinction). Ships complete systems — data pipeline, model, API, interface, cloud — not notebooks. Builds generative AI at SAP — 1st place at Innoweeks 2026 with ReflexIA — and founded ARMATUS, a production iOS training coach. Mechatronics background in signal processing, predictive analytics and real-time monitoring.";
 
 export type CvRole = {
   title: string;
@@ -28,9 +28,9 @@ export const cvRoles: CvRole[] = [
     period: "Jan 2026 — Present",
     location: "San Pedro Garza García, NL, Mexico",
     bullets: [
-      "Design and deploy generative AI services that automate technical fault reporting, improving incident categorization and cutting engineer triage time.",
-      "Build LLM-backed extensions on SAP Business AI and BTP, integrating foundation models via SAP AI Core, AI Launchpad and the generative AI hub.",
-      "Convert unstructured fault text into structured, routable records, replacing manual classification with a model-driven workflow. Certified SAP Generative AI Developer (2026) on this stack.",
+      "Won SAP Innoweeks 2026 (1st place overall, Best Pitch, Best Popular Support; first Mexican winning team) as part of a 14-person Labs Monterrey sprint. Built the ReflexIA Gen AI microservice from scratch — STT, TTS and voice-to-voice (ElevenLabs), an MCP tool server, GraphRAG on SAP HANA Cloud, and a Joule-style SAPUI5 TypeScript UI.",
+      "Tecmilenio validated the impact of replacing a 14-year-old 5+ platform budget-approval stack: $3.9M annual savings, 3,750 educator hours returned, equivalent to 518 student scholarships a year.",
+      "Design and deploy generative AI that automates technical fault reporting on SAP Business AI, AI Core, AI Launchpad and the generative AI hub. Certified SAP Generative AI Developer (2026).",
     ],
   },
   {
@@ -78,6 +78,15 @@ export type CvProject = {
 
 export const cvProjects: CvProject[] = [
   {
+    name: "ReflexIA — SAP Innoweeks 2026 (1st place overall)",
+    stack: "SAP BTP, SAP HANA Cloud, GraphRAG, MCP, ElevenLabs, SAPUI5, FastAPI, Redis, TypeScript",
+    link: "github.com/DArmandoSalinas/INNOWEEKS-2026",
+    bullets: [
+      "Built the AI core of a BTP-native approval workflow for Tecmilenio in a five-week sprint against five Brazilian teams: Gen AI microservice, MCP tools, GraphRAG on HANA Cloud, and a Joule-style voice/chat UI.",
+      "University-validated outcome: $3.9M saved annually, 3,750 hours returned to educators, funding equivalent to 518 scholarships a year. Also Best Pitch and Best Popular Support.",
+    ],
+  },
+  {
     name: "Predictive Maintenance Platform — Remaining Useful Life",
     stack: "XGBoost, SHAP, FastAPI, Streamlit, LangGraph, OpenAI, MLflow, Docker, Google Cloud Run",
     link: "rul-dashboard-368785016309.us-central1.run.app",
@@ -121,14 +130,6 @@ export const cvProjects: CvProject[] = [
       "Scored machine health 0–100 from threaded serial vibration and temperature telemetry with machine-specific adaptive thresholds, keeping the design fully rule-based so every alarm traces to the statistic that fired it; recognized by Rockwell Automation for the integration work.",
     ],
   },
-  {
-    name: "ADHD Screening Support with Fairness Analysis",
-    stack: "scikit-learn, XGBoost, Keras, KernelPCA, SHAP, LIME",
-    link: "github.com/DArmandoSalinas/Predicting-ADHD-sex",
-    bullets: [
-      "Predicted ADHD outcomes for 1,213 participants from fMRI connectomes and psychosocial data at 82% accuracy, 0.88–0.90 recall and 0.866 AUC; reported results by sex, surfacing a female-recall gap tied to documented underdiagnosis.",
-    ],
-  },
 ];
 
 export const cvSkills = [
@@ -159,6 +160,9 @@ export const cvSkills = [
       "SAP AI Core",
       "SAP AI Launchpad",
       "SAP Generative AI Hub",
+      "GraphRAG",
+      "Model Context Protocol (MCP)",
+      "ElevenLabs",
       "OpenAI GPT-4o",
       "LangChain",
       "LangGraph",
@@ -183,6 +187,9 @@ export const cvSkills = [
       "GitHub",
       "Vercel",
       "React Native (Expo)",
+      "SAPUI5",
+      "SAP HANA Cloud",
+      "Redis",
       "PostgreSQL",
       "SQLAlchemy",
       "Alembic",
@@ -250,6 +257,7 @@ export const cvCerts: CvCertGroup[] = [
   {
     group: "Awards",
     items: [
+      "SAP Innoweeks 2026 — 1st place overall, Best Pitch, Best Popular Support (first Mexican team to win)",
       "1st place — Tec Expo Ingenierías, Tecnológico de Monterrey (2025)",
       "Rockwell Automation Integration Recognition — Tec de Monterrey (2025)",
     ],

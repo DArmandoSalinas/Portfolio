@@ -47,6 +47,7 @@ export function Credentials({
   const headlines = useMemo<Headline[]>(() => {
     const flat = certifications.flatMap((g) => g.items);
     const sap = flat.find((c) => c.id === "sap-genai");
+    const innoweeks = flat.find((c) => c.id === "innoweeks");
     const rockwell = flat.find((c) => c.id === "rockwell");
     const distinction = education[0].distinction
       ? ` · ${education[0].distinction}`
@@ -74,6 +75,15 @@ export function Credentials({
         ratio: "aspect-[4/5]",
       },
       {
+        id: "innoweeks",
+        title: innoweeks?.title ?? "SAP Innoweeks 2026 — 1st Place Overall",
+        issuer: innoweeks?.issuer ?? "SAP Labs Latin America",
+        meta: innoweeks?.year ?? "Aug 2026",
+        note: innoweeks?.takeaway ?? "",
+        image: innoweeks?.image,
+        alt: "SAP Innoweeks 2026 awards — Winner, Best Pitch, Best Popular Support",
+      },
+      {
         id: "sap",
         title: sap?.title ?? "SAP Certified — Generative AI Developer",
         issuer: sap?.issuer ?? "SAP",
@@ -94,7 +104,7 @@ export function Credentials({
     ];
   }, [certifications, education]);
 
-  const headlineIds = new Set(["sap-genai", "rockwell"]);
+  const headlineIds = new Set(["innoweeks", "sap-genai", "rockwell"]);
   const archive = certifications
     .map((g) => ({ ...g, items: g.items.filter((c) => !headlineIds.has(c.id)) }))
     .filter((g) => g.items.length > 0);

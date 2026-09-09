@@ -64,6 +64,77 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "innoweeks",
+    brief:
+      "Five-week sprint at SAP Labs Latin America Monterrey against five Brazilian teams. A BTP-native AI workflow for Tecmilenio. I owned part of the AI core: the Gen AI microservice, an MCP tool server, GraphRAG on HANA Cloud, and a Joule-style voice and chat UI in SAPUI5.",
+    title: "ReflexIA — SAP Innoweeks",
+    hook: "1st place overall. First Mexican team to win Innoweeks.",
+    problem:
+      "Tecmilenio's budget approvals lived in a 14-year-old stack across 5+ disconnected platforms. Flagged requests took more than five business days. The university put the drag at $3.9M a year, held together by the people forced to use it every day.",
+    body: "SAP Innoweeks 2026, 12th edition — a five-week sprint at SAP Labs Latin America Monterrey against five teams from Brazil. Fourteen people built ReflexIA, an SAP BTP-native AI workflow that replaced that approval chain with one intelligent path. I was responsible for part of the AI core: the Gen AI microservice from scratch (speech-to-text, TTS, and voice-to-voice via ElevenLabs), a Model Context Protocol server exposing those tools as agent-callable actions, and GraphRAG on SAP HANA Cloud so the model could query organizational policies and approval chains in context. I also built the voice and chat UI in SAPUI5 TypeScript, Joule-style. Tecmilenio validated the impact: $3.9M saved annually, 3,750 hours returned to educators, enough to fund 518 student scholarships a year. 1st place overall, Best Pitch, Best Popular Support — the first time a Mexican team has won.",
+    categories: ["Production", "NLP / LLMs"],
+    metrics: [
+      { value: "1st", label: "overall · Innoweeks 2026" },
+      { value: "First", label: "Mexican team to win" },
+      { value: "$3.9M", label: "validated / year" },
+      { value: "518", label: "scholarships / year" },
+    ],
+    stack: [
+      "SAP BTP",
+      "SAP HANA Cloud",
+      "GraphRAG",
+      "MCP",
+      "ElevenLabs",
+      "SAPUI5",
+      "FastAPI",
+      "TypeScript",
+    ],
+    repo: "https://github.com/DArmandoSalinas/INNOWEEKS-2026",
+    note: "Team of 14 at SAP Labs Latin America Monterrey. Also Best Pitch and Best Popular Support. Impact figures validated by Tecmilenio. Private repository.",
+    gallery: {
+      kind: "board",
+      shots: [
+        {
+          src: "/work/innoweeks/team.jpg",
+          alt: "The fourteen-person SAP Labs Latin America Monterrey team with Innoweeks 2026 trophies, in front of the SAP Innoweeks 12th Edition backdrop",
+          label: "The team",
+          frame: "wide",
+        },
+        {
+          src: "/work/innoweeks/working.jpg",
+          alt: "Diego Armando Salinas with the ReflexIA laptop during Innoweeks, talking through the demo with the team",
+          label: "Building",
+          frame: "wide",
+        },
+        {
+          src: "/work/innoweeks/cheer.jpg",
+          alt: "The team celebrating the Innoweeks 2026 win at SAP Labs Latin America",
+          label: "The win",
+          frame: "wide",
+        },
+        {
+          src: "/work/innoweeks/huddle.jpg",
+          alt: "Team huddle after winning SAP Innoweeks 2026",
+          label: "After",
+          frame: "wide",
+        },
+        {
+          src: "/work/innoweeks/trophy.jpg",
+          alt: "SAP Innoweeks crystal trophy with the 2026 Universidad Tecmilenio plaque",
+          label: "Trophy",
+          frame: "doc",
+        },
+        {
+          src: "/work/innoweeks/awards.jpg",
+          alt: "Winner medals and the Best Pitch and Best Popular Support plaques from SAP Innoweeks 12th Edition, August 2026",
+          label: "Awards",
+          frame: "doc",
+        },
+      ],
+    },
+    featured: true,
+  },
+  {
     id: "armatus",
     brief:
       "A closed five-step protocol: calibrate the athlete, map overload, check readiness before load, dose the day, log against a technique standard. Each new week is regenerated from logged PRs and accumulated fatigue, with running and cycling counted as real load rather than a footnote.",
@@ -603,11 +674,10 @@ export const projects: Project[] = [
 ];
 
 /**
- * The five rows at the top of Work, in reading order: two founder products, a
- * production ML service, an awarded industrial system, and the research thesis.
- * Ordered by what a hiring manager needs first, not by date.
+ * Spotlight rows at the top of Work, in reading order. Ordered by what a
+ * hiring manager needs first, not by date.
  */
-export const SPOTLIGHT_IDS = ["armatus", "coazon", "rul", "motor", "rag", "hrv"] as const;
+export const SPOTLIGHT_IDS = ["innoweeks", "armatus", "coazon", "rul", "motor", "rag", "hrv"] as const;
 
 const byId = new Map(projects.map((p) => [p.id, p]));
 

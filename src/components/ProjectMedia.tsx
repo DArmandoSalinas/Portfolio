@@ -162,9 +162,15 @@ export function ProjectMedia({
   const hero = shots[0];
   const heroFrame = hero ? shotFrame(hero, defaultFrame) : "phone";
   const canExpand = shots.length > 1;
-  const phones = gallery.kind === "phones";
-  const countLabel = phones ? t.screensCount(shots.length) : t.docsCount(shots.length);
-  const hideLabel = phones ? t.hideScreens : t.hideDocs;
+  const frames = shots.map((s) => shotFrame(s, defaultFrame));
+  const allPhones = frames.every((f) => f === "phone");
+  const allDocs = frames.every((f) => f === "doc");
+  const countLabel = allPhones
+    ? t.screensCount(shots.length)
+    : allDocs
+      ? t.docsCount(shots.length)
+      : t.photosCount(shots.length);
+  const hideLabel = allPhones ? t.hideScreens : allDocs ? t.hideDocs : t.hidePhotos;
 
   const updateArrows = useCallback(() => {
     const el = scroller.current;

@@ -10,13 +10,14 @@ const es: Role[] = [
     location: "San Pedro Garza García, N.L.",
     current: true,
     summary:
-      "Diseño y despliego IA generativa que automatiza el reporte de fallas técnicas: mejor categorización de incidentes, respuesta más rápida.",
+      "Despliego IA generativa sobre SAP BTP en Labs Latin America Monterrey. En 2026 nuestro equipo de 14 ganó Innoweeks — 1.er lugar general, Best Pitch, Best Popular Support — el primer equipo mexicano en ganar la competencia.",
     points: [
-      "Construyo servicios de GenAI sobre SAP Business AI y patrones de extensión de BTP.",
-      "Trabajo con LLMs de primer nivel a través de SAP AI Core, AI Launchpad y el generative AI hub.",
-      "SAP Certified — SAP Generative AI Developer.",
+      "En ReflexIA, un sprint de cinco semanas para Tecmilenio contra cinco equipos de Brasil, construí el microservicio de Gen AI desde cero: speech-to-text, TTS y voz a voz (ElevenLabs), un servidor MCP de herramientas invocables por el agente, y GraphRAG sobre SAP HANA Cloud para que el modelo consultara políticas y cadenas de aprobación en contexto.",
+      "Construí la UI de voz y chat en SAPUI5 TypeScript, estilo Joule.",
+      "Tecmilenio validó el reemplazo de un stack de aprobaciones de presupuesto de 14 años en 5+ plataformas: $3.9M ahorrados al año, 3,750 horas devueltas a educadores, suficientes para financiar 518 becas estudiantiles al año.",
+      "En el día a día diseño y despliego IA generativa que automatiza el reporte de fallas técnicas sobre SAP Business AI, AI Core, AI Launchpad y el generative AI hub. SAP Certified — Generative AI Developer.",
     ],
-    tags: ["IA generativa", "SAP BTP", "AI Core", "LLMs"],
+    tags: ["IA generativa", "SAP BTP", "GraphRAG", "MCP", "SAPUI5"],
   },
   {
     num: "02",

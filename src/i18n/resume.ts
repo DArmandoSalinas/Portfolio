@@ -13,7 +13,7 @@ import {
 import type { Locale } from "./config";
 
 const summaryEs =
-  "Ingeniero de IA y Machine Learning, MSc in Artificial Intelligence (Distinction). Entrega sistemas completos — pipeline de datos, modelo, API, interfaz, nube — no notebooks. Construye IA generativa en SAP para automatizar el reporte de fallas técnicas y fundó ARMATUS, un coach de iOS en producción. Formación en mecatrónica: procesamiento de señales, analítica predictiva y monitoreo en tiempo real.";
+  "Ingeniero de IA y Machine Learning, MSc in Artificial Intelligence (Distinction). Entrega sistemas completos — pipeline de datos, modelo, API, interfaz, nube — no notebooks. Construye IA generativa en SAP — 1.er lugar en Innoweeks 2026 con ReflexIA — y fundó ARMATUS, un coach de iOS en producción. Formación en mecatrónica: procesamiento de señales, analítica predictiva y monitoreo en tiempo real.";
 
 const rolesEs: CvRole[] = [
   {
@@ -22,9 +22,9 @@ const rolesEs: CvRole[] = [
     period: "ene 2026 — Actualidad",
     location: "San Pedro Garza García, N.L., México",
     bullets: [
-      "Diseño y despliego servicios de IA generativa que automatizan el reporte de fallas técnicas, mejorando la categorización de incidentes y reduciendo el tiempo de triaje del ingeniero.",
-      "Construyo extensiones con LLM sobre SAP Business AI y BTP, integrando foundation models vía SAP AI Core, AI Launchpad y el generative AI hub.",
-      "Convierto texto no estructurado de fallas en registros estructurados y ruteables, reemplazando la clasificación manual con un flujo dirigido por modelo. Certified SAP Generative AI Developer (2026) sobre este stack.",
+      "Gané SAP Innoweeks 2026 (1.er lugar general, Best Pitch, Best Popular Support; primer equipo mexicano en ganar) en un sprint de 14 personas en Labs Monterrey. Construí el microservicio Gen AI de ReflexIA desde cero — STT, TTS y voz a voz (ElevenLabs), un servidor de herramientas MCP, GraphRAG en SAP HANA Cloud y una UI SAPUI5 TypeScript estilo Joule.",
+      "Tecmilenio validó el impacto de reemplazar un stack de aprobaciones de 14 años en 5+ plataformas: $3.9M de ahorro anual, 3,750 horas devueltas a educadores, equivalentes a 518 becas estudiantiles al año.",
+      "Diseño y despliego IA generativa que automatiza el reporte de fallas técnicas sobre SAP Business AI, AI Core, AI Launchpad y el generative AI hub. Certified SAP Generative AI Developer (2026).",
     ],
   },
   {
@@ -65,9 +65,18 @@ const rolesEs: CvRole[] = [
 
 const projectsEs: CvProject[] = [
   {
-    name: "Plataforma de mantenimiento predictivo — Remaining Useful Life",
+    name: "ReflexIA — SAP Innoweeks 2026 (1.er lugar general)",
     stack: cvProjects[0].stack,
     link: cvProjects[0].link,
+    bullets: [
+      "Construí el núcleo de IA de un flujo de aprobación nativo de BTP para Tecmilenio en un sprint de cinco semanas contra cinco equipos de Brasil: microservicio Gen AI, herramientas MCP, GraphRAG en HANA Cloud y una UI de voz/chat estilo Joule.",
+      "Resultado validado por la universidad: $3.9M ahorrados al año, 3,750 horas devueltas a educadores, financiamiento equivalente a 518 becas al año. También Best Pitch y Best Popular Support.",
+    ],
+  },
+  {
+    name: "Plataforma de mantenimiento predictivo — Remaining Useful Life",
+    stack: cvProjects[1].stack,
+    link: cvProjects[1].link,
     bullets: [
       "Predije la vida útil restante de turbofán en NASA C-MAPSS a 16.74 ciclos de RMSE de test, 12.33 MAE y R² 0.825, con SHAP exponiendo el sensor que mueve cada predicción.",
       "Lo serví vía FastAPI detrás de un dashboard de flota Streamlit, más una capa multi-agente LangGraph que responde preguntas en lenguaje natural y emite briefings en PDF.",
@@ -75,8 +84,8 @@ const projectsEs: CvProject[] = [
   },
   {
     name: "Asistente personal de investigación — Retrieval-Augmented Generation",
-    stack: cvProjects[1].stack,
-    link: cvProjects[1].link,
+    stack: cvProjects[2].stack,
+    link: cvProjects[2].link,
     bullets: [
       "Construí pregunta-respuesta sobre documentos que parte, embede y recupera vía MultiQueryRetriever, anclando cada respuesta de GPT-4o en ChromaDB y devolviendo el fragmento fuente.",
       "Indexé un corpus de 149 segmentos y eliminé respuestas sin fuente al hacer de la cita un requisito duro del contrato de respuesta.",
@@ -84,8 +93,8 @@ const projectsEs: CvProject[] = [
   },
   {
     name: "Clasificación de riesgo cardiovascular — ML clínico sin fugas",
-    stack: cvProjects[2].stack,
-    link: cvProjects[2].link,
+    stack: cvProjects[3].stack,
+    link: cvProjects[3].link,
     bullets: [
       "Clasifiqué enfermedad coronaria en 920 pacientes de cuatro sitios a 0.90 ROC-AUC de test, 87.3% recall y 0.85 F1, afinando el umbral por recall porque un caso perdido cuesta más que una falsa alarma.",
       "Evité fugas ajustando el ColumnTransformer dentro de la validación cruzada, y expuse una brecha de transportabilidad vía validación Leave-One-Site-Out (AUC medio 0.79, peor sitio 0.70).",
@@ -93,7 +102,7 @@ const projectsEs: CvProject[] = [
   },
   {
     name: "COAZON — compañero de salud cardíaca (en desarrollo)",
-    stack: cvProjects[3].stack,
+    stack: cvProjects[4].stack,
     bullets: [
       "Construyo una app bilingüe de cuidado cardíaco que convierte una receta en un plan vivo — recordatorios de medicación, registro guiado de presión con tendencias por zona clínica, un motor determinista de banderas rojas y un reporte PDF listo para el médico.",
       "Acoté la capa de IA para que estructure y resuma pero nunca diagnostique, recete ni altere una dosis, y la hice degradar a modo fully manual sin API key para que la app nunca dependa de que el modelo esté disponible.",
@@ -101,19 +110,11 @@ const projectsEs: CvProject[] = [
   },
   {
     name: "Monitoreo de desempeño de motores — IoT industrial (1.er lugar, Tec Expo Ingenierías)",
-    stack: cvProjects[4].stack,
-    link: cvProjects[4].link,
-    bullets: [
-      "Gané primer lugar en Tec Expo Ingenierías al reingeniar un procedimiento de mantenimiento de planta existente en un sistema de monitoreo en vivo, perfilando un motor trifásico Sumitomo en cinco baselines de velocidad y un Haas Mini Mill a partir de trayectorias combinadas.",
-      "Califiqué la salud de máquina 0–100 a partir de telemetría serial de vibración y temperatura con umbrales adaptativos específicos, manteniendo el diseño fully basado en reglas para que cada alarma remita a la estadística que la disparó; reconocimiento de Rockwell Automation por el trabajo de integración.",
-    ],
-  },
-  {
-    name: "Apoyo al tamizaje de TDAH con análisis de equidad",
     stack: cvProjects[5].stack,
     link: cvProjects[5].link,
     bullets: [
-      "Predije outcomes de TDAH para 1,213 participantes a partir de conectomas de fMRI y datos psicosociales a 82% de accuracy, recall 0.88–0.90 y AUC 0.866; reporté resultados por sexo, mostrando una brecha de recall femenino ligada al subdiagnóstico documentado.",
+      "Gané primer lugar en Tec Expo Ingenierías al reingeniar un procedimiento de mantenimiento de planta existente en un sistema de monitoreo en vivo, perfilando un motor trifásico Sumitomo en cinco baselines de velocidad y un Haas Mini Mill a partir de trayectorias combinadas.",
+      "Califiqué la salud de máquina 0–100 a partir de telemetría serial de vibración y temperatura con umbrales adaptativos específicos, manteniendo el diseño fully basado en reglas para que cada alarma remita a la estadística que la disparó; reconocimiento de Rockwell Automation por el trabajo de integración.",
     ],
   },
 ];
@@ -156,6 +157,7 @@ const certsEs: CvCertGroup[] = [
   {
     group: "Distinciones",
     items: [
+      "SAP Innoweeks 2026 — 1.er lugar general, Best Pitch, Best Popular Support (primer equipo mexicano en ganar)",
       "1.er lugar — Tec Expo Ingenierías, Tecnológico de Monterrey (2025)",
       "Rockwell Automation Integration Recognition — Tec de Monterrey (2025)",
     ],
